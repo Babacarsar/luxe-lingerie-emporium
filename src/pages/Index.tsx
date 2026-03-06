@@ -195,7 +195,7 @@ const Index = () => {
       </section>
 
       {/* Thiouraye section */}
-      <section className="py-24 md:py-32 bg-card">
+      <section className="py-24 md:py-32">
         <div className="container">
           <motion.div
             initial="hidden"
