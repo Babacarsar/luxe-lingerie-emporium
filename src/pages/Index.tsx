@@ -50,7 +50,15 @@ const Index = () => {
       {/* Hero */}
       <section className="relative h-screen flex items-center justify-center">
         <motion.div style={{ scale: heroScale }} className="absolute inset-0">
-          <img src={heroBg} alt="JOFA Lingerie" className="w-full h-full object-cover" />
+          <video 
+            src={heroBg.replace('.jpg', '')} 
+            alt="JOFA Lingerie" 
+            className="w-full h-full object-cover" 
+            autoPlay 
+            muted 
+            loop 
+            playsInline
+          />
         </motion.div>
         <div className="absolute inset-0 bg-gradient-to-b from-background/40 via-background/20 to-background" />
         <div className="absolute inset-0 bg-gradient-to-r from-background/60 via-transparent to-background/60" />
