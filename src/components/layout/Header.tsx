@@ -1,14 +1,16 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Menu, X } from "lucide-react";
+import { Menu, X, ShoppingBag, User } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { CartDrawer } from "@/components/CartDrawer";
 import { motion, AnimatePresence } from "framer-motion";
 import logoJofa from "@/assets/logo-jofa.png";
+
 const navLinks = [
   { label: "Accueil", to: "/" },
-  { label: "Boutique", to: "/boutique" },
-  { label: "À Propos", to: "/a-propos" },
+  { label: "Lingerie", to: "/boutique" },
+  { label: "Thiouraye", to: "/boutique?cat=thiouraye" },
+  { label: "Bin Bin", to: "/boutique?cat=binbin" },
   { label: "Guide des Tailles", to: "/guide-des-tailles" },
   { label: "Contact", to: "/contact" },
   { label: "FAQ", to: "/faq" },
@@ -49,13 +51,13 @@ export const Header = () => {
           {mobileOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
         </Button>
 
-        {/* Nav left (desktop) */}
-        <nav className="hidden md:flex items-center gap-8">
-          {navLinks.slice(0, 3).map((link) => (
+        {/* Nav links (desktop) */}
+        <nav className="hidden md:flex items-center gap-6">
+          {navLinks.map((link) => (
             <Link
               key={link.to}
               to={link.to}
-              className={`text-[11px] font-body uppercase tracking-[0.25em] transition-colors duration-300 ${
+              className={`text-[11px] font-body uppercase tracking-[0.2em] transition-colors duration-300 ${
                 location.pathname === link.to
                   ? "text-primary"
                   : "text-foreground/50 hover:text-foreground"
@@ -66,29 +68,15 @@ export const Header = () => {
           ))}
         </nav>
 
-        {/* Logo center */}
-        <Link to="/" className="absolute left-1/2 -translate-x-1/2">
-          <img src={logoJofa} alt="JOFA" className="h-14 md:h-20 w-auto" />
-        </Link>
-
-        {/* Nav right (desktop) + cart */}
-        <div className="flex items-center gap-8">
-          <nav className="hidden md:flex items-center gap-8">
-            {navLinks.slice(3).map((link) => (
-              <Link
-                key={link.to}
-                to={link.to}
-                className={`text-[11px] font-body uppercase tracking-[0.25em] transition-colors duration-300 ${
-                  location.pathname === link.to
-                    ? "text-primary"
-                    : "text-foreground/50 hover:text-foreground"
-                }`}
-              >
-                {link.label}
-              </Link>
-            ))}
-          </nav>
+        {/* Right side: cart, account, logo */}
+        <div className="flex items-center gap-4">
           <CartDrawer />
+          <Link to="/" className="text-foreground/50 hover:text-foreground transition-colors">
+            <User className="h-5 w-5" />
+          </Link>
+          <Link to="/">
+            <img src={logoJofa} alt="JOFA" className="h-12 md:h-16 w-auto" />
+          </Link>
         </div>
       </div>
 
