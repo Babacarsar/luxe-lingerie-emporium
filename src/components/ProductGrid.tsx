@@ -1,16 +1,15 @@
-import { useShopifyProducts } from "@/hooks/useShopifyProducts";
 import { ProductCard } from "./ProductCard";
-import { Loader2 } from "lucide-react";
 import { motion } from "framer-motion";
+import { getMockProducts, type MockProduct } from "@/data/mockProducts";
 
 interface ProductGridProps {
   title?: string;
   limit?: number;
-  searchQuery?: string;
+  category?: string;
 }
 
-export const ProductGrid = ({ title, limit = 20, searchQuery }: ProductGridProps) => {
-  const { data: products, isLoading, error } = useShopifyProducts(limit, searchQuery);
+export const ProductGrid = ({ title, limit = 20, category }: ProductGridProps) => {
+  const products = getMockProducts(category).slice(0, limit);
 
   return (
     <section className="container py-16 md:py-24">
@@ -20,18 +19,9 @@ export const ProductGrid = ({ title, limit = 20, searchQuery }: ProductGridProps
           <h2 className="font-display text-4xl md:text-6xl text-gold-gradient">{title}</h2>
         </div>
       )}
-      {isLoading ? (
-        <div className="flex justify-center py-24">
-          <Loader2 className="w-6 h-6 animate-spin text-primary/50" />
-        </div>
-      ) : error ? (
-        <p className="text-center text-muted-foreground font-body text-sm">Erreur de chargement des produits.</p>
-      ) : !products || products.length === 0 ? (
+      {products.length === 0 ? (
         <div className="text-center py-24">
-          <p className="text-muted-foreground font-body text-base">Aucun produit trouvé.</p>
-          <p className="text-muted-foreground font-body text-sm mt-3 opacity-60">
-            Dites-moi dans le chat quel produit vous souhaitez créer avec son prix.
-          </p>
+          <p className="text-muted-foreground font-body text-base">Aucun produit trouvé dans cette catégorie.</p>
         </div>
       ) : (
         <motion.div

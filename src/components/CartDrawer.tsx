@@ -1,24 +1,20 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle, SheetTrigger } from "@/components/ui/sheet";
-import { ShoppingCart, Minus, Plus, Trash2, ExternalLink, Loader2 } from "lucide-react";
+import { ShoppingCart, Minus, Plus, Trash2, Loader2 } from "lucide-react";
 import { useCartStore } from "@/stores/cartStore";
+import { toast } from "sonner";
 
 export const CartDrawer = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const { items, isLoading, isSyncing, updateQuantity, removeItem, getCheckoutUrl, syncCart } = useCartStore();
+  const { items, isLoading, updateQuantity, removeItem } = useCartStore();
   const totalItems = items.reduce((sum, item) => sum + item.quantity, 0);
   const totalPrice = items.reduce((sum, item) => sum + (parseFloat(item.price.amount) * item.quantity), 0);
 
-  useEffect(() => { if (isOpen) syncCart(); }, [isOpen, syncCart]);
-
   const handleCheckout = () => {
-    const checkoutUrl = getCheckoutUrl();
-    if (checkoutUrl) {
-      window.open(checkoutUrl, '_blank');
-      setIsOpen(false);
-    }
+    toast.success("Simulation : votre commande a été passée !", { position: "top-center" });
+    setIsOpen(false);
   };
 
   return (
@@ -87,8 +83,8 @@ export const CartDrawer = () => {
                   <span className="font-display text-lg">Total</span>
                   <span className="text-xl font-bold text-primary">{new Intl.NumberFormat('fr-SN', { style: 'currency', currency: 'XOF', minimumFractionDigits: 0 }).format(totalPrice)}</span>
                 </div>
-                <Button onClick={handleCheckout} className="w-full bg-primary text-primary-foreground hover:bg-primary/90" size="lg" disabled={items.length === 0 || isLoading || isSyncing}>
-                  {isLoading || isSyncing ? <Loader2 className="w-4 h-4 animate-spin" /> : <><ExternalLink className="w-4 h-4 mr-2" />Passer la commande</>}
+                <Button onClick={handleCheckout} className="w-full bg-primary text-primary-foreground hover:bg-primary/90" size="lg" disabled={items.length === 0 || isLoading}>
+                  {isLoading ? <Loader2 className="w-4 h-4 animate-spin" /> : <>Passer la commande</>}
                 </Button>
               </div>
             </>

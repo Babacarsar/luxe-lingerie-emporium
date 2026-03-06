@@ -1,20 +1,20 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { useCartStore } from "@/stores/cartStore";
-import { Minus, Plus, Trash2, ShoppingCart, ExternalLink, ArrowLeft, Loader2 } from "lucide-react";
+import { Minus, Plus, Trash2, ShoppingCart, ArrowLeft } from "lucide-react";
 import { motion } from "framer-motion";
+import { toast } from "sonner";
 
 const formatPrice = (amount: string) =>
   new Intl.NumberFormat("fr-SN", { style: "currency", currency: "XOF", minimumFractionDigits: 0 }).format(parseFloat(amount));
 
 const Cart = () => {
-  const { items, isLoading, updateQuantity, removeItem, getCheckoutUrl } = useCartStore();
+  const { items, isLoading, updateQuantity, removeItem } = useCartStore();
   const totalPrice = items.reduce((sum, item) => sum + parseFloat(item.price.amount) * item.quantity, 0);
   const totalItems = items.reduce((sum, item) => sum + item.quantity, 0);
 
   const handleCheckout = () => {
-    const url = getCheckoutUrl();
-    if (url) window.open(url, "_blank");
+    toast.success("Simulation : commande passée avec succès ! 🎉", { position: "top-center" });
   };
 
   return (
@@ -102,9 +102,9 @@ const Cart = () => {
                   </div>
                 </div>
                 <Button onClick={handleCheckout} className="w-full bg-primary text-primary-foreground hover:bg-primary/90" size="lg" disabled={isLoading}>
-                  {isLoading ? <Loader2 className="w-4 h-4 animate-spin" /> : <><ExternalLink className="w-4 h-4 mr-2" /> Passer la commande</>}
+                  Passer la commande
                 </Button>
-                <p className="text-[10px] text-muted-foreground text-center font-body">Paiement sécurisé via Shopify</p>
+                <p className="text-[10px] text-muted-foreground text-center font-body">Simulation — aucun paiement réel</p>
               </div>
             </motion.div>
           </div>
