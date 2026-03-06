@@ -15,6 +15,9 @@ import thiouraye2 from "@/assets/thiouraye-2.jpg";
 import thiouraye3 from "@/assets/thiouraye-3.jpg";
 import thiouraye4 from "@/assets/thiouraye-4.jpg";
 import thiouraye5 from "@/assets/thiouraye-5.jpg";
+import binBin1 from "@/assets/bin-bin-1.jpg";
+import binBin2 from "@/assets/bin-bin-2.jpg";
+import binBin3 from "@/assets/bin-bin-3.jpg";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 40 },
