@@ -166,6 +166,26 @@ const Index = () => {
         </div>
       </section>
 
+      {/* Editorial photos */}
+      <section className="py-16 md:py-24">
+        <div className="container">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+            variants={stagger}
+            className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6"
+          >
+            <motion.div variants={fadeUp} transition={{ duration: 0.7 }} className="overflow-hidden">
+              <img src={editorial1} alt="JOFA Editorial" className="w-full h-[500px] md:h-[700px] object-cover hover:scale-105 transition-transform duration-700" />
+            </motion.div>
+            <motion.div variants={fadeUp} transition={{ duration: 0.7 }} className="overflow-hidden">
+              <img src={editorial2} alt="JOFA Editorial" className="w-full h-[500px] md:h-[700px] object-cover hover:scale-105 transition-transform duration-700" />
+            </motion.div>
+          </motion.div>
+        </div>
+      </section>
+
       {/* Products */}
       <div className="gold-line w-full" />
       <ProductGrid title="Nos Pièces" limit={8} />
