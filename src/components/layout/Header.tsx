@@ -84,7 +84,7 @@ export const Header = () => {
                 </Link>
                 <div className="absolute top-full left-0 pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
                   <div className="bg-background border border-border rounded-md shadow-lg py-2 min-w-[160px]">
-                    {lingerieSubLinks.map((sub) => (
+                    {(link.hasSubmenu === "lingerie" ? lingerieSubLinks : binbinSubLinks).map((sub) => (
                       <Link
                         key={sub.to}
                         to={sub.to}
