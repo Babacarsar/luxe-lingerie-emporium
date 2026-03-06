@@ -4,6 +4,7 @@ import { ProductGrid } from "@/components/ProductGrid";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { ArrowRight, Sparkles, Heart, Shield } from "lucide-react";
 import heroBg from "@/assets/hero-bg.jpg";
+import heroVideo from "@/assets/hero-video.mp4";
 import collectionLingerie from "@/assets/collection-lingerie.jpg";
 import collectionRobe from "@/assets/collection-robe.jpg";
 import collectionPagne from "@/assets/collection-pagne.jpg";
@@ -50,7 +51,14 @@ const Index = () => {
       {/* Hero */}
       <section className="relative h-screen flex items-center justify-center">
         <motion.div style={{ scale: heroScale }} className="absolute inset-0">
-          <img src={heroBg} alt="JOFA Lingerie" className="w-full h-full object-cover" />
+          <video 
+            src={heroVideo} 
+            className="w-full h-full object-cover" 
+            autoPlay 
+            muted 
+            loop 
+            playsInline
+          />
         </motion.div>
         <div className="absolute inset-0 bg-gradient-to-b from-background/40 via-background/20 to-background" />
         <div className="absolute inset-0 bg-gradient-to-r from-background/60 via-transparent to-background/60" />
