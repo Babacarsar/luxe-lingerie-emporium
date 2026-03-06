@@ -12,11 +12,16 @@ const lingerieSubLinks = [
   { label: "Pagne", to: "/boutique?cat=pagne" },
 ];
 
+const binbinSubLinks = [
+  { label: "Bin Bin Épaisses", to: "/boutique?cat=binbin-epaisses" },
+  { label: "Bin Bin Fins", to: "/boutique?cat=binbin-fins" },
+];
+
 const navLinks = [
   { label: "Accueil", to: "/" },
-  { label: "Lingerie", to: "/boutique", hasSubmenu: true },
+  { label: "Lingerie", to: "/boutique", hasSubmenu: "lingerie" },
   { label: "Thiouraye", to: "/boutique?cat=thiouraye" },
-  { label: "Bin Bin", to: "/boutique?cat=binbin" },
+  { label: "Bin Bin", to: "/boutique?cat=binbin", hasSubmenu: "binbin" },
   { label: "Guide des Tailles", to: "/guide-des-tailles" },
   { label: "Contact", to: "/contact" },
   { label: "FAQ", to: "/faq" },
