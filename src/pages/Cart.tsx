@@ -9,13 +9,12 @@ const formatPrice = (amount: string) =>
   new Intl.NumberFormat("fr-SN", { style: "currency", currency: "XOF", minimumFractionDigits: 0 }).format(parseFloat(amount));
 
 const Cart = () => {
-  const { items, isLoading, updateQuantity, removeItem, getCheckoutUrl } = useCartStore();
+  const { items, isLoading, updateQuantity, removeItem } = useCartStore();
   const totalPrice = items.reduce((sum, item) => sum + parseFloat(item.price.amount) * item.quantity, 0);
   const totalItems = items.reduce((sum, item) => sum + item.quantity, 0);
 
   const handleCheckout = () => {
-    const url = getCheckoutUrl();
-    if (url) window.open(url, "_blank");
+    toast.success("Simulation : commande passée avec succès ! 🎉", { position: "top-center" });
   };
 
   return (
