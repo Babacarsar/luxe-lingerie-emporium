@@ -4,7 +4,7 @@ import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { CartDrawer } from "@/components/CartDrawer";
 import { motion, AnimatePresence } from "framer-motion";
-
+import logoJofa from "@/assets/logo-jofa.png";
 const navLinks = [
   { label: "Accueil", to: "/" },
   { label: "Boutique", to: "/boutique" },
