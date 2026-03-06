@@ -1,18 +1,17 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { ShoppingCart, Loader2 } from "lucide-react";
+import { ShoppingCart } from "lucide-react";
 import { useCartStore } from "@/stores/cartStore";
-import { type ShopifyProduct } from "@/lib/shopify";
 import { toast } from "sonner";
 import { motion } from "framer-motion";
+import type { MockProduct } from "@/data/mockProducts";
 
 interface ProductCardProps {
-  product: ShopifyProduct;
+  product: MockProduct;
 }
 
 export const ProductCard = ({ product }: ProductCardProps) => {
   const addItem = useCartStore(state => state.addItem);
-  const isLoading = useCartStore(state => state.isLoading);
   const { node } = product;
   const image = node.images.edges[0]?.node;
   const variant = node.variants.edges[0]?.node;
@@ -23,7 +22,7 @@ export const ProductCard = ({ product }: ProductCardProps) => {
     e.stopPropagation();
     if (!variant) return;
     await addItem({
-      product,
+      product: product as any,
       variantId: variant.id,
       variantTitle: variant.title,
       price: variant.price,
@@ -52,11 +51,11 @@ export const ProductCard = ({ product }: ProductCardProps) => {
         <div className="absolute bottom-0 left-0 right-0 p-5 translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-out">
           <Button
             onClick={handleAddToCart}
-            disabled={isLoading || !variant?.availableForSale}
+            disabled={!variant?.availableForSale}
             className="w-full bg-primary text-primary-foreground hover:bg-primary/90 rounded-none font-body text-xs uppercase tracking-[0.2em] py-5"
             size="sm"
           >
-            {isLoading ? <Loader2 className="w-4 h-4 animate-spin" /> : <><ShoppingCart className="w-4 h-4 mr-2" />Ajouter</>}
+            <ShoppingCart className="w-4 h-4 mr-2" />Ajouter
           </Button>
         </div>
       </div>
