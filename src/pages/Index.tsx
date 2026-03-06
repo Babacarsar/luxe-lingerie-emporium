@@ -15,6 +15,9 @@ import thiouraye2 from "@/assets/thiouraye-2.jpg";
 import thiouraye3 from "@/assets/thiouraye-3.jpg";
 import thiouraye4 from "@/assets/thiouraye-4.jpg";
 import thiouraye5 from "@/assets/thiouraye-5.jpg";
+import binBin1 from "@/assets/bin-bin-1.jpg";
+import binBin2 from "@/assets/bin-bin-2.jpg";
+import binBin3 from "@/assets/bin-bin-3.jpg";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 40 },
@@ -256,8 +259,70 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Products */}
-      <div className="gold-line w-full" />
+      {/* Bin Bin — Perles Tour de Taille */}
+      <section className="py-20 md:py-28 border-t border-border">
+        <div className="container">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+            variants={stagger}
+            className="text-center mb-16"
+          >
+            <motion.p variants={fadeUp} transition={{ duration: 0.6 }} className="font-body text-xs uppercase tracking-[0.4em] text-primary/70 mb-4">
+              Bijoux Traditionnels
+            </motion.p>
+            <motion.h2 variants={fadeUp} transition={{ duration: 0.6 }} className="font-display text-4xl md:text-6xl text-gold-gradient mb-4">
+              Bin Bin
+            </motion.h2>
+            <motion.p variants={fadeUp} transition={{ duration: 0.6 }} className="font-body text-muted-foreground max-w-xl mx-auto">
+              Les perles tour de taille authentiques. Un accessoire intemporel qui célèbre la beauté et la tradition sénégalaise.
+            </motion.p>
+          </motion.div>
+
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+            variants={stagger}
+            className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6"
+          >
+            {[binBin1, binBin2, binBin3].map((img, i) => (
+              <motion.div
+                key={i}
+                variants={fadeUp}
+                transition={{ duration: 0.6 }}
+                className="overflow-hidden"
+              >
+                <img
+                  src={img}
+                  alt={`Bin Bin JOFA ${i + 1}`}
+                  className="w-full h-[400px] object-cover hover:scale-105 transition-transform duration-700"
+                />
+              </motion.div>
+            ))}
+          </motion.div>
+
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={fadeUp}
+            transition={{ duration: 0.6 }}
+            className="text-center mt-12"
+          >
+            <Link to="/boutique?cat=bin-bin">
+              <Button
+                variant="outline"
+                className="border-primary/40 text-primary hover:bg-primary hover:text-primary-foreground font-body uppercase tracking-[0.3em] text-xs px-10 py-6 rounded-none"
+              >
+                Découvrir nos Bin Bin
+                <ArrowRight className="ml-3 h-4 w-4" />
+              </Button>
+            </Link>
+          </motion.div>
+        </div>
+      </section>
       <ProductGrid title="Nos Pièces" limit={8} />
       <div className="gold-line w-full" />
 
