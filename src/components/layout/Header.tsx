@@ -152,7 +152,7 @@ export const Header = () => {
                 >
                   <Link
                     to={link.to}
-                    className={`block px-8 py-4 text-[11px] font-body uppercase tracking-[0.25em] transition-colors ${
+                    className={`block px-8 py-3 text-[11px] font-body uppercase tracking-[0.25em] transition-colors ${
                       location.pathname === link.to
                         ? "text-primary"
                         : "text-foreground/50 hover:text-foreground"
@@ -160,8 +160,32 @@ export const Header = () => {
                   >
                     {link.label}
                   </Link>
+                  {link.hasSubmenu && (
+                    <div className="pl-12 flex flex-col">
+                      {(link.hasSubmenu === "lingerie" ? lingerieSubLinks : binbinSubLinks).map((sub) => (
+                        <Link
+                          key={sub.to}
+                          to={sub.to}
+                          className="block py-2 text-[10px] font-body uppercase tracking-[0.15em] text-foreground/40 hover:text-foreground transition-colors"
+                        >
+                          {sub.label}
+                        </Link>
+                      ))}
+                    </div>
+                  )}
                 </motion.div>
               ))}
+              {/* Mobile search */}
+              <div className="px-8 pt-4">
+                <div className="relative">
+                  <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-foreground/40" />
+                  <input
+                    type="text"
+                    placeholder="Rechercher..."
+                    className="w-full h-9 rounded-full border border-border bg-background/50 pl-9 pr-4 text-xs text-foreground placeholder:text-foreground/40 focus:outline-none focus:ring-1 focus:ring-primary"
+                  />
+                </div>
+              </div>
             </nav>
           </motion.div>
         )}
