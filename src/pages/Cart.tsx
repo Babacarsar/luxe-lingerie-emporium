@@ -102,9 +102,9 @@ const Cart = () => {
                   </div>
                 </div>
                 <Button onClick={handleCheckout} className="w-full bg-primary text-primary-foreground hover:bg-primary/90" size="lg" disabled={isLoading}>
-                  {isLoading ? <Loader2 className="w-4 h-4 animate-spin" /> : <><ExternalLink className="w-4 h-4 mr-2" /> Passer la commande</>}
+                  Passer la commande
                 </Button>
-                <p className="text-[10px] text-muted-foreground text-center font-body">Paiement sécurisé via Shopify</p>
+                <p className="text-[10px] text-muted-foreground text-center font-body">Simulation — aucun paiement réel</p>
               </div>
             </motion.div>
           </div>
