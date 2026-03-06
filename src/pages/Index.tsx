@@ -10,6 +10,11 @@ import collectionPagne from "@/assets/collection-pagne.jpg";
 import brandStory from "@/assets/brand-story.jpg";
 import editorial1 from "@/assets/editorial-1.jpg";
 import editorial2 from "@/assets/editorial-2.jpg";
+import thiouraye1 from "@/assets/thiouraye-1.jpg";
+import thiouraye2 from "@/assets/thiouraye-2.jpg";
+import thiouraye3 from "@/assets/thiouraye-3.jpg";
+import thiouraye4 from "@/assets/thiouraye-4.jpg";
+import thiouraye5 from "@/assets/thiouraye-5.jpg";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 40 },
