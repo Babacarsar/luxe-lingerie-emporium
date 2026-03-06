@@ -1,106 +1,276 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { ProductGrid } from "@/components/ProductGrid";
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { ArrowRight, Sparkles, Heart, Shield } from "lucide-react";
 import heroBg from "@/assets/hero-bg.jpg";
+import collectionEnsembles from "@/assets/collection-ensembles.jpg";
+import collectionNuisettes from "@/assets/collection-nuisettes.jpg";
+import collectionBodys from "@/assets/collection-bodys.jpg";
+import brandStory from "@/assets/brand-story.jpg";
+
+const fadeUp = {
+  hidden: { opacity: 0, y: 40 },
+  visible: { opacity: 1, y: 0 },
+};
+
+const stagger = {
+  visible: { transition: { staggerChildren: 0.15 } },
+};
+
+const collections = [
+  { title: "Ensembles", desc: "L'art de l'accord parfait", image: collectionEnsembles },
+  { title: "Nuisettes", desc: "Élégance nocturne", image: collectionNuisettes },
+  { title: "Bodys", desc: "Seconde peau", image: collectionBodys },
+];
+
+const values = [
+  { icon: Sparkles, title: "Savoir-faire", desc: "Dentelle et soie sélectionnées avec soin" },
+  { icon: Heart, title: "Inclusivité", desc: "Du XS au 3XL, pour toutes les femmes" },
+  { icon: Shield, title: "Qualité", desc: "Matières premières européennes certifiées" },
+];
 
 const Index = () => {
+  const { scrollYProgress } = useScroll();
+  const heroScale = useTransform(scrollYProgress, [0, 0.3], [1, 1.15]);
+  const heroOpacity = useTransform(scrollYProgress, [0, 0.25], [1, 0]);
+
   return (
-    <div>
+    <div className="overflow-hidden">
       {/* Hero */}
-      <section className="relative h-[85vh] flex items-center justify-center overflow-hidden">
-        <img src={heroBg} alt="JOFA Lingerie" className="absolute inset-0 w-full h-full object-cover" />
-        <div className="absolute inset-0 bg-gradient-to-b from-background/60 via-background/30 to-background" />
+      <section className="relative h-screen flex items-center justify-center">
+        <motion.div style={{ scale: heroScale }} className="absolute inset-0">
+          <img src={heroBg} alt="JOFA Lingerie" className="w-full h-full object-cover" />
+        </motion.div>
+        <div className="absolute inset-0 bg-gradient-to-b from-background/40 via-background/20 to-background" />
+        <div className="absolute inset-0 bg-gradient-to-r from-background/60 via-transparent to-background/60" />
+
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className="relative z-10 text-center px-6 max-w-3xl"
+          style={{ opacity: heroOpacity }}
+          className="relative z-10 text-center px-6 max-w-4xl"
         >
-          <h1 className="font-display text-5xl md:text-7xl font-bold text-gold-gradient mb-6 leading-tight">
-            La féminité en signature
-          </h1>
-          <p className="font-body text-lg md:text-xl text-foreground/80 mb-8">
-            Lingerie de luxe pensée pour sublimer la femme africaine moderne
-          </p>
-          <Link to="/boutique">
-            <Button size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90 font-body uppercase tracking-widest px-10">
-              Découvrir la Collection
-            </Button>
-          </Link>
+          <motion.div
+            initial="hidden"
+            animate="visible"
+            variants={stagger}
+          >
+            <motion.p
+              variants={fadeUp}
+              transition={{ duration: 0.8 }}
+              className="font-body text-sm md:text-base uppercase tracking-[0.4em] text-primary/80 mb-6"
+            >
+              Collection 2025
+            </motion.p>
+            <motion.h1
+              variants={fadeUp}
+              transition={{ duration: 0.8, delay: 0.1 }}
+              className="font-display text-6xl md:text-8xl lg:text-9xl font-light text-gold-gradient mb-8 leading-[0.9]"
+            >
+              La féminité
+              <br />
+              <span className="italic">en signature</span>
+            </motion.h1>
+            <motion.p
+              variants={fadeUp}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="font-body text-lg md:text-xl text-foreground/60 mb-10 max-w-xl mx-auto font-light"
+            >
+              Lingerie de luxe pensée pour sublimer la femme africaine moderne
+            </motion.p>
+            <motion.div variants={fadeUp} transition={{ duration: 0.8, delay: 0.3 }}>
+              <Link to="/boutique">
+                <Button
+                  size="lg"
+                  className="bg-primary text-primary-foreground hover:bg-primary/90 font-body uppercase tracking-[0.3em] text-xs px-12 py-7 rounded-none"
+                >
+                  Découvrir la Collection
+                  <ArrowRight className="ml-3 h-4 w-4" />
+                </Button>
+              </Link>
+            </motion.div>
+          </motion.div>
+        </motion.div>
+
+        {/* Scroll indicator */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 1.5 }}
+          className="absolute bottom-10 left-1/2 -translate-x-1/2"
+        >
+          <motion.div
+            animate={{ y: [0, 8, 0] }}
+            transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
+            className="w-px h-16 bg-gradient-to-b from-primary/60 to-transparent"
+          />
         </motion.div>
       </section>
+
+      {/* Gold divider */}
+      <div className="gold-line w-full" />
 
       {/* Collections */}
-      <section className="container py-20">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="grid grid-cols-1 md:grid-cols-3 gap-6"
-        >
-          {[
-            { title: "Ensembles", desc: "L'art de l'accord parfait" },
-            { title: "Nuisettes", desc: "Élégance nocturne" },
-            { title: "Bodys", desc: "Seconde peau" },
-          ].map((cat) => (
-            <Link
-              key={cat.title}
-              to="/boutique"
-              className="group relative h-64 rounded-lg overflow-hidden bg-secondary border border-border flex items-end p-6 hover:border-primary/50 transition-colors"
-            >
-              <div>
-                <h3 className="font-display text-2xl text-foreground group-hover:text-primary transition-colors">{cat.title}</h3>
-                <p className="font-body text-sm text-muted-foreground">{cat.desc}</p>
-              </div>
-            </Link>
-          ))}
-        </motion.div>
-      </section>
-
-      {/* Products */}
-      <ProductGrid title="Nos Pièces" limit={8} />
-
-      {/* Brand story */}
-      <section className="bg-card border-y border-border">
-        <div className="container py-20 text-center max-w-2xl mx-auto">
+      <section className="py-24 md:py-32">
+        <div className="container">
           <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+            variants={stagger}
+            className="text-center mb-16"
           >
-            <h2 className="font-display text-3xl md:text-4xl text-gold-gradient mb-6">L'Histoire JOFA</h2>
-            <p className="font-body text-muted-foreground leading-relaxed">
-              JOFA célèbre la beauté et la sensualité de la femme africaine à travers des pièces de lingerie
-              d'exception. Chaque création mêle savoir-faire artisanal et design contemporain, pour une lingerie
-              qui vous ressemble — audacieuse, élégante, inoubliable.
-            </p>
-            <Link to="/a-propos">
-              <Button variant="outline" className="mt-8 border-primary text-primary hover:bg-primary hover:text-primary-foreground font-body uppercase tracking-widest">
-                En savoir plus
-              </Button>
-            </Link>
+            <motion.p variants={fadeUp} transition={{ duration: 0.6 }} className="font-body text-xs uppercase tracking-[0.4em] text-primary/70 mb-4">
+              Explorer
+            </motion.p>
+            <motion.h2 variants={fadeUp} transition={{ duration: 0.6 }} className="font-display text-4xl md:text-6xl text-gold-gradient">
+              Nos Collections
+            </motion.h2>
+          </motion.div>
+
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+            variants={stagger}
+            className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6"
+          >
+            {collections.map((cat, i) => (
+              <motion.div key={cat.title} variants={fadeUp} transition={{ duration: 0.7 }}>
+                <Link
+                  to="/boutique"
+                  className="group relative block h-[500px] md:h-[600px] overflow-hidden"
+                >
+                  <img
+                    src={cat.image}
+                    alt={cat.title}
+                    className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-background via-background/20 to-transparent" />
+                  <div className="absolute inset-0 border border-primary/0 group-hover:border-primary/30 transition-colors duration-500" />
+                  <div className="absolute bottom-0 left-0 right-0 p-8">
+                    <p className="font-body text-xs uppercase tracking-[0.3em] text-primary/70 mb-2">{cat.desc}</p>
+                    <h3 className="font-display text-3xl md:text-4xl text-foreground group-hover:text-primary transition-colors duration-500">
+                      {cat.title}
+                    </h3>
+                    <div className="mt-4 flex items-center gap-2 text-primary/0 group-hover:text-primary transition-all duration-500 translate-y-2 group-hover:translate-y-0">
+                      <span className="font-body text-xs uppercase tracking-[0.2em]">Découvrir</span>
+                      <ArrowRight className="h-3 w-3" />
+                    </div>
+                  </div>
+                </Link>
+              </motion.div>
+            ))}
           </motion.div>
         </div>
       </section>
 
-      {/* Newsletter */}
-      <section className="container py-20 text-center max-w-lg mx-auto">
-        <h2 className="font-display text-3xl text-gold-gradient mb-4">Restez Connectée</h2>
-        <p className="font-body text-muted-foreground mb-6">
-          Inscrivez-vous pour recevoir nos offres exclusives et nouveautés.
-        </p>
-        <div className="flex gap-2">
-          <input
-            type="email"
-            placeholder="Votre adresse email"
-            className="flex-1 h-11 rounded-lg border border-border bg-secondary px-4 text-sm font-body text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary"
-          />
-          <Button className="bg-primary text-primary-foreground hover:bg-primary/90 font-body">
-            S'inscrire
-          </Button>
+      {/* Products */}
+      <div className="gold-line w-full" />
+      <ProductGrid title="Nos Pièces" limit={8} />
+      <div className="gold-line w-full" />
+
+      {/* Brand story — cinematic split */}
+      <section className="py-24 md:py-32">
+        <div className="container">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-0 items-stretch min-h-[600px]">
+            {/* Image side */}
+            <motion.div
+              initial={{ opacity: 0, x: -40 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8 }}
+              className="relative overflow-hidden"
+            >
+              <img src={brandStory} alt="L'histoire JOFA" className="w-full h-full object-cover min-h-[400px]" />
+              <div className="absolute inset-0 bg-gradient-to-r from-transparent to-background/30 lg:to-background" />
+            </motion.div>
+
+            {/* Text side */}
+            <motion.div
+              initial={{ opacity: 0, x: 40 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="flex flex-col justify-center px-8 lg:px-16 py-16 bg-card lg:bg-transparent"
+            >
+              <p className="font-body text-xs uppercase tracking-[0.4em] text-primary/70 mb-4">Notre Histoire</p>
+              <h2 className="font-display text-4xl md:text-5xl text-gold-gradient mb-8 leading-tight">
+                La beauté dans
+                <br />
+                <span className="italic">chaque détail</span>
+              </h2>
+              <p className="font-body text-muted-foreground leading-relaxed mb-6 text-base">
+                JOFA célèbre la beauté et la sensualité de la femme africaine à travers des pièces de lingerie
+                d'exception. Chaque création mêle savoir-faire artisanal et design contemporain.
+              </p>
+              <p className="font-body text-muted-foreground leading-relaxed mb-10 text-base">
+                Des matières nobles, une coupe précise, un souci du détail obsessionnel — pour une lingerie
+                qui vous ressemble : audacieuse, élégante, inoubliable.
+              </p>
+              <Link to="/a-propos">
+                <Button
+                  variant="outline"
+                  className="border-primary/40 text-primary hover:bg-primary hover:text-primary-foreground font-body uppercase tracking-[0.3em] text-xs px-10 py-6 rounded-none w-fit"
+                >
+                  En savoir plus
+                  <ArrowRight className="ml-3 h-4 w-4" />
+                </Button>
+              </Link>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* Values */}
+      <section className="py-20 border-y border-border">
+        <div className="container">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={stagger}
+            className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-8"
+          >
+            {values.map((val) => (
+              <motion.div key={val.title} variants={fadeUp} transition={{ duration: 0.6 }} className="text-center">
+                <val.icon className="h-8 w-8 text-primary mx-auto mb-5" strokeWidth={1} />
+                <h3 className="font-display text-2xl text-foreground mb-3">{val.title}</h3>
+                <p className="font-body text-muted-foreground text-sm">{val.desc}</p>
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Newsletter — editorial */}
+      <section className="py-24 md:py-32">
+        <div className="container max-w-2xl text-center">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={stagger}
+          >
+            <motion.p variants={fadeUp} transition={{ duration: 0.6 }} className="font-body text-xs uppercase tracking-[0.4em] text-primary/70 mb-4">
+              Newsletter
+            </motion.p>
+            <motion.h2 variants={fadeUp} transition={{ duration: 0.6 }} className="font-display text-4xl md:text-5xl text-gold-gradient mb-6">
+              Restez Connectée
+            </motion.h2>
+            <motion.p variants={fadeUp} transition={{ duration: 0.6 }} className="font-body text-muted-foreground mb-10 font-light">
+              Inscrivez-vous pour recevoir nos offres exclusives, avant-premières et inspirations.
+            </motion.p>
+            <motion.div variants={fadeUp} transition={{ duration: 0.6 }} className="flex gap-0 max-w-md mx-auto">
+              <input
+                type="email"
+                placeholder="Votre adresse email"
+                className="flex-1 h-14 border border-border bg-transparent px-6 text-sm font-body text-foreground placeholder:text-muted-foreground focus:outline-none focus:border-primary transition-colors rounded-none"
+              />
+              <Button className="bg-primary text-primary-foreground hover:bg-primary/90 font-body uppercase tracking-[0.2em] text-xs h-14 px-8 rounded-none">
+                S'inscrire
+              </Button>
+            </motion.div>
+          </motion.div>
         </div>
       </section>
     </div>
