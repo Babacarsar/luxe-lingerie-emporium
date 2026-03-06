@@ -83,8 +83,8 @@ export const CartDrawer = () => {
                   <span className="font-display text-lg">Total</span>
                   <span className="text-xl font-bold text-primary">{new Intl.NumberFormat('fr-SN', { style: 'currency', currency: 'XOF', minimumFractionDigits: 0 }).format(totalPrice)}</span>
                 </div>
-                <Button onClick={handleCheckout} className="w-full bg-primary text-primary-foreground hover:bg-primary/90" size="lg" disabled={items.length === 0 || isLoading || isSyncing}>
-                  {isLoading || isSyncing ? <Loader2 className="w-4 h-4 animate-spin" /> : <><ExternalLink className="w-4 h-4 mr-2" />Passer la commande</>}
+                <Button onClick={handleCheckout} className="w-full bg-primary text-primary-foreground hover:bg-primary/90" size="lg" disabled={items.length === 0 || isLoading}>
+                  {isLoading ? <Loader2 className="w-4 h-4 animate-spin" /> : <>Passer la commande</>}
                 </Button>
               </div>
             </>
