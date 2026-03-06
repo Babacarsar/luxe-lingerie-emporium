@@ -41,15 +41,20 @@ export const Header = () => {
       }`}
     >
       <div className="container flex items-center justify-between h-16 md:h-20">
-        {/* Mobile menu button */}
-        <Button
-          variant="ghost"
-          size="icon"
-          className="md:hidden text-foreground"
-          onClick={() => setMobileOpen(!mobileOpen)}
-        >
-          {mobileOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-        </Button>
+        {/* Left side: mobile menu + logo */}
+        <div className="flex items-center gap-4">
+          <Button
+            variant="ghost"
+            size="icon"
+            className="md:hidden text-foreground"
+            onClick={() => setMobileOpen(!mobileOpen)}
+          >
+            {mobileOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+          </Button>
+          <Link to="/">
+            <img src={logoJofa} alt="JOFA" className="h-12 md:h-16 w-auto" />
+          </Link>
+        </div>
 
         {/* Nav links (desktop) */}
         <nav className="hidden md:flex items-center gap-6">
@@ -68,14 +73,11 @@ export const Header = () => {
           ))}
         </nav>
 
-        {/* Right side: cart, account, logo */}
+        {/* Right side: cart, account */}
         <div className="flex items-center gap-4">
           <CartDrawer />
           <Link to="/" className="text-foreground/50 hover:text-foreground transition-colors">
             <User className="h-5 w-5" />
-          </Link>
-          <Link to="/">
-            <img src={logoJofa} alt="JOFA" className="h-12 md:h-16 w-auto" />
           </Link>
         </div>
       </div>
