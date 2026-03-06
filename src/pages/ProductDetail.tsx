@@ -92,7 +92,7 @@ const ProductDetail = () => {
         <div className="space-y-6">
           <h1 className="font-display text-3xl md:text-4xl">{product.title}</h1>
           <p className="font-display text-2xl text-primary font-bold">
-            {selectedVariant ? `${parseFloat(selectedVariant.price.amount).toFixed(2)} ${selectedVariant.price.currencyCode}` : ''}
+            {selectedVariant ? new Intl.NumberFormat('fr-SN', { style: 'currency', currency: 'XOF', minimumFractionDigits: 0 }).format(parseFloat(selectedVariant.price.amount)) : ''}
           </p>
 
           {/* Options */}

@@ -62,7 +62,7 @@ export const CartDrawer = () => {
                       <div className="flex-1 min-w-0">
                         <h4 className="font-body font-bold text-sm truncate">{item.product.node.title}</h4>
                         <p className="text-xs text-muted-foreground">{item.selectedOptions.map(o => o.value).join(' • ')}</p>
-                        <p className="text-sm font-bold text-primary mt-1">{parseFloat(item.price.amount).toFixed(2)} {item.price.currencyCode}</p>
+                        <p className="text-sm font-bold text-primary mt-1">{new Intl.NumberFormat('fr-SN', { style: 'currency', currency: 'XOF', minimumFractionDigits: 0 }).format(parseFloat(item.price.amount))}</p>
                       </div>
                       <div className="flex flex-col items-end gap-2 flex-shrink-0">
                         <Button variant="ghost" size="icon" className="h-6 w-6 text-muted-foreground" onClick={() => removeItem(item.variantId)}>
@@ -85,7 +85,7 @@ export const CartDrawer = () => {
               <div className="flex-shrink-0 space-y-4 pt-4 border-t border-border">
                 <div className="flex justify-between items-center">
                   <span className="font-display text-lg">Total</span>
-                  <span className="text-xl font-bold text-primary">{totalPrice.toFixed(2)} {items[0]?.price.currencyCode}</span>
+                  <span className="text-xl font-bold text-primary">{new Intl.NumberFormat('fr-SN', { style: 'currency', currency: 'XOF', minimumFractionDigits: 0 }).format(totalPrice)}</span>
                 </div>
                 <Button onClick={handleCheckout} className="w-full bg-primary text-primary-foreground hover:bg-primary/90" size="lg" disabled={items.length === 0 || isLoading || isSyncing}>
                   {isLoading || isSyncing ? <Loader2 className="w-4 h-4 animate-spin" /> : <><ExternalLink className="w-4 h-4 mr-2" />Passer la commande</>}

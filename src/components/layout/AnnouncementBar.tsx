@@ -8,7 +8,7 @@ export const AnnouncementBar = () => (
       transition={{ duration: 0.5 }}
       className="text-[11px] font-body uppercase tracking-[0.35em] text-primary/80"
     >
-      Livraison offerte dès 100€ d'achat — Collection 2025
+      Livraison gratuite à Dakar dès 25 000 FCFA d'achat — Collection 2025
     </motion.p>
   </div>
 );

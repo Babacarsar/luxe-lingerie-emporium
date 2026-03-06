@@ -20,11 +20,11 @@ const Contact = () => (
           </div>
           <div className="flex items-center gap-3">
             <Phone className="w-5 h-5 text-primary" />
-            <span className="font-body text-muted-foreground">+33 1 23 45 67 89</span>
+            <span className="font-body text-muted-foreground">+221 77 123 45 67</span>
           </div>
           <div className="flex items-center gap-3">
             <MapPin className="w-5 h-5 text-primary" />
-            <span className="font-body text-muted-foreground">Paris, France</span>
+            <span className="font-body text-muted-foreground">Dakar, Sénégal</span>
           </div>
         </div>
       </div>
