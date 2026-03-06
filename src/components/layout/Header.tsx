@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Menu, X, ShoppingBag, User } from "lucide-react";
+import { Menu, X, User, Search } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { CartDrawer } from "@/components/CartDrawer";
 import { motion, AnimatePresence } from "framer-motion";
@@ -73,8 +73,19 @@ export const Header = () => {
           ))}
         </nav>
 
-        {/* Right side: cart, account */}
-        <div className="flex items-center gap-4">
+        {/* Right side: search, cart, account */}
+        <div className="flex items-center gap-3">
+          <div className="relative hidden sm:block">
+            <Search className="absolute left-2.5 top-1/2 -translate-y-1/2 h-4 w-4 text-foreground/40" />
+            <input
+              type="text"
+              placeholder="Rechercher..."
+              className="h-8 w-40 rounded-full border border-border bg-background/50 pl-8 pr-3 text-xs text-foreground placeholder:text-foreground/40 focus:outline-none focus:ring-1 focus:ring-primary transition-all"
+            />
+          </div>
+          <Button variant="ghost" size="icon" className="sm:hidden text-foreground/50 hover:text-foreground">
+            <Search className="h-5 w-5" />
+          </Button>
           <CartDrawer />
           <Link to="/" className="text-foreground/50 hover:text-foreground transition-colors">
             <User className="h-5 w-5" />
