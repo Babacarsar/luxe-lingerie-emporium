@@ -24,7 +24,7 @@ export const Footer = () => (
           <div className="md:col-span-4">
             <img src={logoJofa} alt="JOFA" className="h-14 w-auto mb-5" />
             <p className="text-sm text-white/70 font-body leading-relaxed max-w-xs">
-              La féminité en signature. Lingerie de luxe pensée pour la femme africaine moderne.
+              La féminité en signature. Lingerie de luxe pensée pour la femme sénégalaise moderne.
             </p>
             <div className="flex gap-5 mt-8">
               <a href="#" className="text-white/60 hover:text-primary transition-colors duration-300">

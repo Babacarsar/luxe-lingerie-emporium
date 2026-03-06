@@ -85,7 +85,7 @@ export const CartDrawer = () => {
               <div className="flex-shrink-0 space-y-4 pt-4 border-t border-border">
                 <div className="flex justify-between items-center">
                   <span className="font-display text-lg">Total</span>
-                  <span className="text-xl font-bold text-primary">{totalPrice.toFixed(2)} {items[0]?.price.currencyCode}</span>
+                  <span className="text-xl font-bold text-primary">{new Intl.NumberFormat('fr-SN', { style: 'currency', currency: 'XOF', minimumFractionDigits: 0 }).format(totalPrice)}</span>
                 </div>
                 <Button onClick={handleCheckout} className="w-full bg-primary text-primary-foreground hover:bg-primary/90" size="lg" disabled={items.length === 0 || isLoading || isSyncing}>
                   {isLoading || isSyncing ? <Loader2 className="w-4 h-4 animate-spin" /> : <><ExternalLink className="w-4 h-4 mr-2" />Passer la commande</>}

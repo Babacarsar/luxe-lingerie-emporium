@@ -63,7 +63,7 @@ export const ProductCard = ({ product }: ProductCardProps) => {
       <div className="mt-4 space-y-1.5">
         <h3 className="font-display text-lg group-hover:text-primary transition-colors duration-300">{node.title}</h3>
         <p className="font-body text-sm text-primary tracking-wider">
-          {parseFloat(price.amount).toFixed(2)} {price.currencyCode}
+          {new Intl.NumberFormat('fr-SN', { style: 'currency', currency: 'XOF', minimumFractionDigits: 0 }).format(parseFloat(price.amount))}
         </p>
       </div>
     </Link>

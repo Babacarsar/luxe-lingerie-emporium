@@ -75,7 +75,7 @@ const Index = () => {
               transition={{ duration: 0.8, delay: 0.2 }}
               className="font-body text-lg md:text-xl text-foreground/60 mb-10 max-w-xl mx-auto font-light"
             >
-              Lingerie de luxe pensée pour sublimer la femme africaine moderne
+              Lingerie de luxe pensée pour sublimer la femme sénégalaise moderne
             </motion.p>
             <motion.div variants={fadeUp} transition={{ duration: 0.8, delay: 0.3 }}>
               <Link to="/boutique">

@@ -1,12 +1,13 @@
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 
 const faqs = [
-  { q: "Quels sont les délais de livraison ?", a: "Les commandes sont expédiées sous 2-3 jours ouvrés. La livraison standard prend 3-5 jours ouvrés en France métropolitaine." },
-  { q: "Comment choisir ma taille ?", a: "Consultez notre Guide des Tailles pour trouver la correspondance parfaite. En cas de doute, n'hésitez pas à nous contacter." },
+  { q: "Quels sont les délais de livraison ?", a: "Les commandes sont expédiées sous 2-3 jours ouvrés. La livraison à Dakar prend 1-2 jours, et 3-5 jours pour les autres régions du Sénégal." },
+  { q: "Comment choisir ma taille ?", a: "Consultez notre Guide des Tailles pour trouver la correspondance parfaite. En cas de doute, contactez-nous par WhatsApp ou téléphone." },
   { q: "Puis-je retourner un article ?", a: "Oui, vous disposez de 14 jours après réception pour effectuer un retour. Les articles doivent être dans leur état d'origine, non portés et avec les étiquettes." },
-  { q: "Quels modes de paiement acceptez-vous ?", a: "Nous acceptons les cartes bancaires (Visa, Mastercard, Amex), PayPal et Apple Pay via notre processus de paiement sécurisé." },
-  { q: "La livraison est-elle gratuite ?", a: "Oui, la livraison est offerte pour toute commande supérieure à 100€. En dessous, les frais de livraison sont de 5,90€." },
+  { q: "Quels modes de paiement acceptez-vous ?", a: "Nous acceptons les paiements par Wave, Orange Money, Free Money, cartes bancaires (Visa, Mastercard) et le paiement à la livraison à Dakar." },
+  { q: "La livraison est-elle gratuite ?", a: "Oui, la livraison est offerte à Dakar pour toute commande supérieure à 25 000 FCFA. Pour les autres régions, les frais varient selon la destination." },
   { q: "Comment entretenir ma lingerie JOFA ?", a: "Nous recommandons un lavage à la main à l'eau froide ou un cycle délicat en machine dans un filet de lavage. Ne pas utiliser de sèche-linge." },
+  { q: "Livrez-vous en dehors du Sénégal ?", a: "Oui, nous livrons dans toute l'Afrique de l'Ouest (Côte d'Ivoire, Mali, Guinée, etc.). Les délais et frais varient selon le pays." },
 ];
 
 const FAQ = () => (
