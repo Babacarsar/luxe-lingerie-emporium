@@ -63,7 +63,14 @@ export const Header = () => {
             {mobileOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
           </Button>
           <Link to="/">
-            <img src={logoJofa} alt="JOFA" className="h-12 md:h-16 w-auto" />
+            <motion.img
+              src={logoJofa}
+              alt="JOFA"
+              className="h-12 md:h-16 w-auto"
+              whileHover={{ scale: 1.08, rotate: -2 }}
+              whileTap={{ scale: 0.95 }}
+              transition={{ type: "spring", stiffness: 300, damping: 15 }}
+            />
           </Link>
         </div>
 
