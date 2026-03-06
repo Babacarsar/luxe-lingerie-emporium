@@ -24,9 +24,9 @@ const AppLayout = () => {
     <>
       <AnnouncementBar />
       <Header />
-      <main className="min-h-screen">
+      <main className="min-h-screen pt-16 md:pt-20">
         <Routes>
-          <Route path="/" element={<Index />} />
+          <Route path="/" element={<div className="-mt-16 md:-mt-20"><Index /></div>} />
           <Route path="/boutique" element={<Shop />} />
           <Route path="/product/:handle" element={<ProductDetail />} />
           <Route path="/a-propos" element={<About />} />

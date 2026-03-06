@@ -4,6 +4,7 @@ import { ShoppingCart, Loader2 } from "lucide-react";
 import { useCartStore } from "@/stores/cartStore";
 import { type ShopifyProduct } from "@/lib/shopify";
 import { toast } from "sonner";
+import { motion } from "framer-motion";
 
 interface ProductCardProps {
   product: ShopifyProduct;
@@ -34,34 +35,34 @@ export const ProductCard = ({ product }: ProductCardProps) => {
 
   return (
     <Link to={`/product/${node.handle}`} className="group block">
-      <div className="relative overflow-hidden rounded-lg bg-card border border-border aspect-[3/4]">
+      <div className="relative overflow-hidden bg-card aspect-[3/4] hover-lift">
         {image ? (
           <img
             src={image.url}
             alt={image.altText || node.title}
-            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+            className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
             loading="lazy"
           />
         ) : (
           <div className="w-full h-full bg-secondary flex items-center justify-center">
-            <span className="text-muted-foreground font-body text-sm">Image non disponible</span>
+            <span className="text-muted-foreground font-body text-xs uppercase tracking-widest">Image non disponible</span>
           </div>
         )}
-        <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-        <div className="absolute bottom-0 left-0 right-0 p-4 translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+        <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+        <div className="absolute bottom-0 left-0 right-0 p-5 translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-out">
           <Button
             onClick={handleAddToCart}
             disabled={isLoading || !variant?.availableForSale}
-            className="w-full bg-primary text-primary-foreground hover:bg-primary/90"
+            className="w-full bg-primary text-primary-foreground hover:bg-primary/90 rounded-none font-body text-xs uppercase tracking-[0.2em] py-5"
             size="sm"
           >
-            {isLoading ? <Loader2 className="w-4 h-4 animate-spin" /> : <><ShoppingCart className="w-4 h-4 mr-2" />Ajouter au panier</>}
+            {isLoading ? <Loader2 className="w-4 h-4 animate-spin" /> : <><ShoppingCart className="w-4 h-4 mr-2" />Ajouter</>}
           </Button>
         </div>
       </div>
-      <div className="mt-3 space-y-1">
-        <h3 className="font-display text-base group-hover:text-primary transition-colors">{node.title}</h3>
-        <p className="font-body text-sm font-bold text-primary">
+      <div className="mt-4 space-y-1.5">
+        <h3 className="font-display text-lg group-hover:text-primary transition-colors duration-300">{node.title}</h3>
+        <p className="font-body text-sm text-primary tracking-wider">
           {parseFloat(price.amount).toFixed(2)} {price.currencyCode}
         </p>
       </div>
