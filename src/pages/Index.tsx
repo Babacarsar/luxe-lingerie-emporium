@@ -27,7 +27,7 @@ const collections = [
 const values = [
   { icon: Sparkles, title: "Savoir-faire", desc: "Dentelle et soie sélectionnées avec soin" },
   { icon: Heart, title: "Inclusivité", desc: "Du XS au 3XL, pour toutes les femmes" },
-  { icon: Shield, title: "Qualité", desc: "Matières premières européennes certifiées" },
+  { icon: Shield, title: "Qualité", desc: "Matières premières soigneusement sélectionnées" },
 ];
 
 const Index = () => {
