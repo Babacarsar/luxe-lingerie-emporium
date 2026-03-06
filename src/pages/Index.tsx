@@ -4,6 +4,7 @@ import { ProductGrid } from "@/components/ProductGrid";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { ArrowRight, Sparkles, Heart, Shield } from "lucide-react";
 import heroBg from "@/assets/hero-bg.jpg";
+import heroVideo from "@/assets/hero-video.mp4";
 import collectionLingerie from "@/assets/collection-lingerie.jpg";
 import collectionRobe from "@/assets/collection-robe.jpg";
 import collectionPagne from "@/assets/collection-pagne.jpg";
