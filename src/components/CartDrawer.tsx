@@ -62,7 +62,7 @@ export const CartDrawer = () => {
                       <div className="flex-1 min-w-0">
                         <h4 className="font-body font-bold text-sm truncate">{item.product.node.title}</h4>
                         <p className="text-xs text-muted-foreground">{item.selectedOptions.map(o => o.value).join(' • ')}</p>
-                        <p className="text-sm font-bold text-primary mt-1">{parseFloat(item.price.amount).toFixed(2)} {item.price.currencyCode}</p>
+                        <p className="text-sm font-bold text-primary mt-1">{new Intl.NumberFormat('fr-SN', { style: 'currency', currency: 'XOF', minimumFractionDigits: 0 }).format(parseFloat(item.price.amount))}</p>
                       </div>
                       <div className="flex flex-col items-end gap-2 flex-shrink-0">
                         <Button variant="ghost" size="icon" className="h-6 w-6 text-muted-foreground" onClick={() => removeItem(item.variantId)}>
