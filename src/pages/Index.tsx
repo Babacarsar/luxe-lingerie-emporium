@@ -8,6 +8,8 @@ import collectionLingerie from "@/assets/collection-lingerie.jpg";
 import collectionRobe from "@/assets/collection-robe.jpg";
 import collectionPagne from "@/assets/collection-pagne.jpg";
 import brandStory from "@/assets/brand-story.jpg";
+import editorial1 from "@/assets/editorial-1.jpg";
+import editorial2 from "@/assets/editorial-2.jpg";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 40 },
