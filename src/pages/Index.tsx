@@ -4,9 +4,9 @@ import { ProductGrid } from "@/components/ProductGrid";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { ArrowRight, Sparkles, Heart, Shield } from "lucide-react";
 import heroBg from "@/assets/hero-bg.jpg";
-import collectionEnsembles from "@/assets/collection-ensembles.jpg";
-import collectionNuisettes from "@/assets/collection-nuisettes.jpg";
-import collectionBodys from "@/assets/collection-bodys.jpg";
+import collectionLingerie from "@/assets/collection-lingerie.jpg";
+import collectionRobe from "@/assets/collection-robe.jpg";
+import collectionPagne from "@/assets/collection-pagne.jpg";
 import brandStory from "@/assets/brand-story.jpg";
 
 const fadeUp = {
@@ -19,9 +19,9 @@ const stagger = {
 };
 
 const collections = [
-  { title: "Ensembles", desc: "L'art de l'accord parfait", image: collectionEnsembles },
-  { title: "Nuisettes", desc: "Élégance nocturne", image: collectionNuisettes },
-  { title: "Bodys", desc: "Seconde peau", image: collectionBodys },
+  { title: "Lingerie", desc: "Séduction & élégance", image: collectionLingerie },
+  { title: "Robes", desc: "Grâce & raffinement", image: collectionRobe },
+  { title: "Pagnes", desc: "Tradition & modernité", image: collectionPagne },
 ];
 
 const values = [
