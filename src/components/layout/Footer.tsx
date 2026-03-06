@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Instagram, Facebook, ArrowRight } from "lucide-react";
+import logoJofa from "@/assets/logo-jofa.png";
 
 export const Footer = () => (
   <footer className="bg-card border-t border-border">
