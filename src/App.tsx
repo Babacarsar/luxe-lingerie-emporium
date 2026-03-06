@@ -4,7 +4,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { useCartSync } from "@/hooks/useCartSync";
-import { AnnouncementBar } from "@/components/layout/AnnouncementBar";
+
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import Index from "./pages/Index";
@@ -22,7 +22,7 @@ const AppLayout = () => {
   useCartSync();
   return (
     <>
-      <AnnouncementBar />
+      
       <Header />
       <main className="min-h-screen pt-16 md:pt-20">
         <Routes>
