@@ -6,9 +6,15 @@ import { CartDrawer } from "@/components/CartDrawer";
 import { motion, AnimatePresence } from "framer-motion";
 import logoJofa from "@/assets/logo-jofa.png";
 
+const lingerieSubLinks = [
+  { label: "Lingerie Sexy", to: "/boutique?cat=lingerie-sexy" },
+  { label: "Robe", to: "/boutique?cat=robe" },
+  { label: "Pagne", to: "/boutique?cat=pagne" },
+];
+
 const navLinks = [
   { label: "Accueil", to: "/" },
-  { label: "Lingerie", to: "/boutique" },
+  { label: "Lingerie", to: "/boutique", hasSubmenu: true },
   { label: "Thiouraye", to: "/boutique?cat=thiouraye" },
   { label: "Bin Bin", to: "/boutique?cat=binbin" },
   { label: "Guide des Tailles", to: "/guide-des-tailles" },
@@ -59,17 +65,45 @@ export const Header = () => {
         {/* Nav links (desktop) */}
         <nav className="hidden md:flex items-center gap-6">
           {navLinks.map((link) => (
-            <Link
-              key={link.to}
-              to={link.to}
-              className={`text-[11px] font-body uppercase tracking-[0.2em] transition-colors duration-300 ${
-                location.pathname === link.to
-                  ? "text-primary"
-                  : "text-foreground/50 hover:text-foreground"
-              }`}
-            >
-              {link.label}
-            </Link>
+            link.hasSubmenu ? (
+              <div key={link.to} className="relative group">
+                <Link
+                  to={link.to}
+                  className={`text-[11px] font-body uppercase tracking-[0.2em] transition-colors duration-300 ${
+                    location.pathname === link.to
+                      ? "text-primary"
+                      : "text-foreground/50 hover:text-foreground"
+                  }`}
+                >
+                  {link.label}
+                </Link>
+                <div className="absolute top-full left-0 pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+                  <div className="bg-background border border-border rounded-md shadow-lg py-2 min-w-[160px]">
+                    {lingerieSubLinks.map((sub) => (
+                      <Link
+                        key={sub.to}
+                        to={sub.to}
+                        className="block px-4 py-2 text-[11px] font-body uppercase tracking-[0.15em] text-foreground/60 hover:text-foreground hover:bg-muted transition-colors"
+                      >
+                        {sub.label}
+                      </Link>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            ) : (
+              <Link
+                key={link.to}
+                to={link.to}
+                className={`text-[11px] font-body uppercase tracking-[0.2em] transition-colors duration-300 ${
+                  location.pathname === link.to
+                    ? "text-primary"
+                    : "text-foreground/50 hover:text-foreground"
+                }`}
+              >
+                {link.label}
+              </Link>
+            )
           ))}
         </nav>
 
