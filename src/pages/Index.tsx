@@ -191,6 +191,71 @@ const Index = () => {
         </div>
       </section>
 
+      {/* Thiouraye section */}
+      <section className="py-24 md:py-32 bg-card">
+        <div className="container">
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+            variants={stagger}
+            className="text-center mb-16"
+          >
+            <motion.p variants={fadeUp} transition={{ duration: 0.6 }} className="font-body text-xs uppercase tracking-[0.4em] text-primary/70 mb-4">
+              Encens Traditionnel
+            </motion.p>
+            <motion.h2 variants={fadeUp} transition={{ duration: 0.6 }} className="font-display text-4xl md:text-6xl text-gold-gradient mb-4">
+              Thiouraye
+            </motion.h2>
+            <motion.p variants={fadeUp} transition={{ duration: 0.6 }} className="font-body text-muted-foreground max-w-xl mx-auto">
+              Parfumez votre intérieur avec nos encens d'exception. Oud, santal, bois précieux — une tradition sénégalaise sublimée.
+            </motion.p>
+          </motion.div>
+
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-100px" }}
+            variants={stagger}
+            className="grid grid-cols-2 md:grid-cols-5 gap-3 md:gap-4"
+          >
+            {[thiouraye1, thiouraye2, thiouraye3, thiouraye4, thiouraye5].map((img, i) => (
+              <motion.div
+                key={i}
+                variants={fadeUp}
+                transition={{ duration: 0.6 }}
+                className={`overflow-hidden ${i === 0 ? "col-span-2 row-span-2" : ""}`}
+              >
+                <img
+                  src={img}
+                  alt={`Thiouraye JOFA ${i + 1}`}
+                  className={`w-full object-cover hover:scale-105 transition-transform duration-700 ${i === 0 ? "h-full min-h-[400px]" : "h-[250px] md:h-[300px]"}`}
+                />
+              </motion.div>
+            ))}
+          </motion.div>
+
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={fadeUp}
+            transition={{ duration: 0.6 }}
+            className="text-center mt-12"
+          >
+            <Link to="/boutique?cat=thiouraye">
+              <Button
+                variant="outline"
+                className="border-primary/40 text-primary hover:bg-primary hover:text-primary-foreground font-body uppercase tracking-[0.3em] text-xs px-10 py-6 rounded-none"
+              >
+                Découvrir nos Thiouraye
+                <ArrowRight className="ml-3 h-4 w-4" />
+              </Button>
+            </Link>
+          </motion.div>
+        </div>
+      </section>
+
       {/* Products */}
       <div className="gold-line w-full" />
       <ProductGrid title="Nos Pièces" limit={8} />
