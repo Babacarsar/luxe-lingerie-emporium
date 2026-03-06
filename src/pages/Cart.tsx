@@ -1,8 +1,9 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { useCartStore } from "@/stores/cartStore";
-import { Minus, Plus, Trash2, ShoppingCart, ExternalLink, ArrowLeft, Loader2 } from "lucide-react";
+import { Minus, Plus, Trash2, ShoppingCart, ArrowLeft } from "lucide-react";
 import { motion } from "framer-motion";
+import { toast } from "sonner";
 
 const formatPrice = (amount: string) =>
   new Intl.NumberFormat("fr-SN", { style: "currency", currency: "XOF", minimumFractionDigits: 0 }).format(parseFloat(amount));
