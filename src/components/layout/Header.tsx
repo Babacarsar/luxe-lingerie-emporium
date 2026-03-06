@@ -6,9 +6,15 @@ import { CartDrawer } from "@/components/CartDrawer";
 import { motion, AnimatePresence } from "framer-motion";
 import logoJofa from "@/assets/logo-jofa.png";
 
+const lingerieSubLinks = [
+  { label: "Lingerie Sexy", to: "/boutique?cat=lingerie-sexy" },
+  { label: "Robe", to: "/boutique?cat=robe" },
+  { label: "Pagne", to: "/boutique?cat=pagne" },
+];
+
 const navLinks = [
   { label: "Accueil", to: "/" },
-  { label: "Lingerie", to: "/boutique" },
+  { label: "Lingerie", to: "/boutique", hasSubmenu: true },
   { label: "Thiouraye", to: "/boutique?cat=thiouraye" },
   { label: "Bin Bin", to: "/boutique?cat=binbin" },
   { label: "Guide des Tailles", to: "/guide-des-tailles" },
