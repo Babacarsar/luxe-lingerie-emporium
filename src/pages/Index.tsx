@@ -52,8 +52,7 @@ const Index = () => {
       <section className="relative h-screen flex items-center justify-center">
         <motion.div style={{ scale: heroScale }} className="absolute inset-0">
           <video 
-            src={heroBg.replace('.jpg', '')} 
-            alt="JOFA Lingerie" 
+            src={heroVideo} 
             className="w-full h-full object-cover" 
             autoPlay 
             muted 
