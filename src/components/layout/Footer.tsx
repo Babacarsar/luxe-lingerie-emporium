@@ -13,7 +13,7 @@ export const Footer = () => (
       <div className="grid grid-cols-1 md:grid-cols-12 gap-12">
         {/* Brand */}
         <div className="md:col-span-4">
-          <h3 className="font-display text-3xl text-gold-gradient mb-5 tracking-[0.1em]">JOFA</h3>
+          <img src={logoJofa} alt="JOFA" className="h-12 w-auto mb-5" />
           <p className="text-sm text-muted-foreground font-body leading-relaxed max-w-xs">
             La féminité en signature. Lingerie de luxe pensée pour la femme africaine moderne.
           </p>

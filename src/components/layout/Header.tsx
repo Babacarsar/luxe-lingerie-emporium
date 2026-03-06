@@ -68,9 +68,7 @@ export const Header = () => {
 
         {/* Logo center */}
         <Link to="/" className="absolute left-1/2 -translate-x-1/2">
-          <h1 className="font-display text-3xl md:text-4xl font-light text-gold-gradient tracking-[0.15em]">
-            JOFA
-          </h1>
+          <img src={logoJofa} alt="JOFA" className="h-10 md:h-12 w-auto" />
         </Link>
 
         {/* Nav right (desktop) + cart */}
