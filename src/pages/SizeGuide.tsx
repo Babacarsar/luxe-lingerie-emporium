@@ -130,7 +130,7 @@ const SizeGuide = () => (
       >
         <motion.div variants={fadeUp} transition={{ duration: 0.6 }} className="mb-8">
           <p className="font-body text-xs uppercase tracking-[0.4em] text-primary/70 mb-2">Robes & Pagnes</p>
-          <h2 className="font-display text-3xl md:text-4xl text-foreground">Vêtements</h2>
+          <h2 className="font-display text-3xl md:text-4xl text-foreground">Robe</h2>
         </motion.div>
         <motion.div variants={fadeUp} transition={{ duration: 0.6 }} className="border border-border rounded-lg overflow-hidden">
           <div className="overflow-x-auto">
