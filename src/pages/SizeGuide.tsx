@@ -170,7 +170,7 @@ const SizeGuide = () => (
             <Sparkles className="h-5 w-5 text-primary" strokeWidth={1.5} />
             <p className="font-body text-xs uppercase tracking-[0.4em] text-primary/70">Perles Tour de Taille</p>
           </div>
-          <h2 className="font-display text-3xl md:text-4xl text-foreground">Bin Bin</h2>
+          <h2 className="font-display text-3xl md:text-4xl text-foreground">Bine Bine</h2>
         </motion.div>
         <motion.div variants={fadeUp} transition={{ duration: 0.6 }} className="border border-border rounded-lg overflow-hidden">
           <div className="overflow-x-auto">
