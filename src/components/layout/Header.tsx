@@ -13,8 +13,8 @@ const lingerieSubLinks = [
 ];
 
 const binbinSubLinks = [
-  { label: "Bin Bin Épaisses", to: "/boutique?cat=binbin-epaisses" },
-  { label: "Bin Bin Fins", to: "/boutique?cat=binbin-fins" },
+  { label: "Épais", to: "/boutique?cat=binbin-epaisses" },
+  { label: "Fin", to: "/boutique?cat=binbin-fins" },
 ];
 
 const navLinks = [
