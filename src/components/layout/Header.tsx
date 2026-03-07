@@ -66,7 +66,7 @@ export const Header = () => {
             <motion.img
               src={logoJofa}
               alt="JOFA"
-              className="h-12 md:h-16 w-auto"
+              className="h-16 md:h-24 w-auto"
               whileHover={{ scale: 1.08, rotate: -2 }}
               whileTap={{ scale: 0.95 }}
               transition={{ type: "spring", stiffness: 300, damping: 15 }}
