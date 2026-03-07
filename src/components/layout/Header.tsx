@@ -21,7 +21,7 @@ const navLinks = [
   { label: "Accueil", to: "/" },
   { label: "Lingerie", to: "/boutique", hasSubmenu: "lingerie" },
   { label: "Thiouraye", to: "/boutique?cat=thiouraye" },
-  { label: "Bin Bin", to: "/boutique?cat=binbin", hasSubmenu: "binbin" },
+  { label: "Bine Bine", to: "/boutique?cat=binbin", hasSubmenu: "binbin" },
   { label: "Guide des Tailles", to: "/guide-des-tailles" },
   { label: "Contact", to: "/contact" },
   { label: "FAQ", to: "/faq" },
