@@ -7,9 +7,9 @@ import { motion, AnimatePresence } from "framer-motion";
 import logoJofa from "@/assets/logo-jofa.png";
 
 const boutiqueSubLinks = [
-  { label: "Lingerie Fine", to: "/boutique?cat=lingerie-fines" },
-  { label: "Robe Confort", to: "/boutique?cat=robes-confort" },
-  { label: "Bine Bine", to: "/boutique?cat=binbin" },
+  { label: "Lingerie Sexy", to: "/boutique?cat=lingerie-sexy" },
+  { label: "Robes", to: "/boutique?cat=robe" },
+  { label: "Bin Bin", to: "/boutique?cat=binbin" },
   { label: "Pagne", to: "/boutique?cat=pagne" },
   { label: "Thiouraye", to: "/boutique?cat=thiouraye" },
 ];
