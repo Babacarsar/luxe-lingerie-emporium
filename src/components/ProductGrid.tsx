@@ -35,6 +35,7 @@ export const ProductGrid = ({ title, limit = 20, category, searchQuery }: Produc
         </div>
       ) : (
         <motion.div
+          key={`${category}-${searchQuery}`}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-50px" }}
