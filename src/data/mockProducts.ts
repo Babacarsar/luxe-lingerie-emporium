@@ -85,6 +85,10 @@ export const mockProducts: MockProduct[] = [
   makeProduct("7", "Ensemble Sport Chic Noir", "ensemble-sport-chic", "12000", "lingerie-sexy", "Brassière et shorty en microfibre noire avec bandes élastiques dorées.", [collectionBodys, collectionLingerie]),
   makeProduct("8", "Babydoll Mousseline Lavande", "babydoll-mousseline-lavande", "16000", "lingerie-sexy", "Babydoll aérien en mousseline lavande avec nœud satin et culotte string assortie.", [collectionNuisettes, editorial2]),
   makeProduct("36", "Khadija", "khadija", "20000", "lingerie-sexy", "Lingerie Khadija en dentelle noire transparente avec franges et détails raffinés. Élégance et sensualité.", [khadija1, khadija2]),
+  makeProduct("37", "Salimata", "salimata", "20000", "lingerie-sexy", "Ensemble Salimata en dentelle noire avec franges et perles. Un look audacieux et glamour.", [salimata1, salimata2]),
+  makeProduct("38", "Fatima", "fatima", "22000", "lingerie-sexy", "Body Fatima en dentelle florale transparente avec franges. Sensualité et raffinement.", [fatima1, fatima2]),
+  makeProduct("39", "Codou", "codou", "25000", "lingerie-sexy", "Déshabillé Codou en voile transparent brodé de fleurs rouges et noires. Élégance absolue.", [codou1, codou2]),
+  makeProduct("40", "Maguette", "maguette", "23000", "lingerie-sexy", "Nuisette longue Maguette en dentelle noire avec dos nu. Glamour et sophistication.", [maguette1, maguette2]),
 
   // ─── Robes ───
   makeProduct("9", "Robe Wax Élégance Ankara", "robe-wax-elegance", "28000", "robe", "Robe longue en wax premium motif Ankara. Coupe ajustée avec évasement en bas.", [collectionRobe, collectionPagne]),
