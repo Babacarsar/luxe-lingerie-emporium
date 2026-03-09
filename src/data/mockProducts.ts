@@ -14,6 +14,8 @@ import binBin2 from "@/assets/bin-bin-2.jpg";
 import binBin3 from "@/assets/bin-bin-3.jpg";
 import editorial1 from "@/assets/editorial-1.jpg";
 import editorial2 from "@/assets/editorial-2.jpg";
+import khadija1 from "@/assets/khadija-1.jpg";
+import khadija2 from "@/assets/khadija-2.jpg";
 
 export interface MockProduct {
   node: {
