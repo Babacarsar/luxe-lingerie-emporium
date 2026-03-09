@@ -14,6 +14,8 @@ import binBin2 from "@/assets/bin-bin-2.jpg";
 import binBin3 from "@/assets/bin-bin-3.jpg";
 import editorial1 from "@/assets/editorial-1.jpg";
 import editorial2 from "@/assets/editorial-2.jpg";
+import khadija1 from "@/assets/khadija-1.jpg";
+import khadija2 from "@/assets/khadija-2.jpg";
 
 export interface MockProduct {
   node: {
@@ -74,6 +76,7 @@ export const mockProducts: MockProduct[] = [
   makeProduct("6", "Guêpière Dentelle Ivoire", "guepiere-dentelle-ivoire", "20000", "lingerie-sexy", "Guêpière romantique en dentelle ivoire, parfaite pour les occasions spéciales.", [collectionEnsembles, editorial1]),
   makeProduct("7", "Ensemble Sport Chic Noir", "ensemble-sport-chic", "12000", "lingerie-sexy", "Brassière et shorty en microfibre noire avec bandes élastiques dorées.", [collectionBodys, collectionLingerie]),
   makeProduct("8", "Babydoll Mousseline Lavande", "babydoll-mousseline-lavande", "16000", "lingerie-sexy", "Babydoll aérien en mousseline lavande avec nœud satin et culotte string assortie.", [collectionNuisettes, editorial2]),
+  makeProduct("36", "Khadija", "khadija", "20000", "lingerie-sexy", "Lingerie Khadija en dentelle noire transparente avec franges et détails raffinés. Élégance et sensualité.", [khadija1, khadija2]),
 
   // ─── Robes ───
   makeProduct("9", "Robe Wax Élégance Ankara", "robe-wax-elegance", "28000", "robe", "Robe longue en wax premium motif Ankara. Coupe ajustée avec évasement en bas.", [collectionRobe, collectionPagne]),
