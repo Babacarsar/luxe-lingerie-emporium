@@ -24,6 +24,16 @@ import codou1 from "@/assets/codou-1.jpg";
 import codou2 from "@/assets/codou-2.jpg";
 import maguette1 from "@/assets/maguette-1.jpg";
 import maguette2 from "@/assets/maguette-2.jpg";
+import bintou1 from "@/assets/bintou-1.jpg";
+import bintou2 from "@/assets/bintou-2.jpg";
+import marieme1 from "@/assets/marieme-1.jpg";
+import marieme2 from "@/assets/marieme-2.jpg";
+import coura1 from "@/assets/coura-1.jpg";
+import coura2 from "@/assets/coura-2.jpg";
+import abibatou1 from "@/assets/abibatou-1.jpg";
+import abibatou2 from "@/assets/abibatou-2.jpg";
+import neneBella1 from "@/assets/nene-bella-1.jpg";
+import neneBella2 from "@/assets/nene-bella-2.jpg";
 
 export interface MockProduct {
   node: {
