@@ -24,6 +24,16 @@ import codou1 from "@/assets/codou-1.jpg";
 import codou2 from "@/assets/codou-2.jpg";
 import maguette1 from "@/assets/maguette-1.jpg";
 import maguette2 from "@/assets/maguette-2.jpg";
+import bintou1 from "@/assets/bintou-1.jpg";
+import bintou2 from "@/assets/bintou-2.jpg";
+import marieme1 from "@/assets/marieme-1.jpg";
+import marieme2 from "@/assets/marieme-2.jpg";
+import coura1 from "@/assets/coura-1.jpg";
+import coura2 from "@/assets/coura-2.jpg";
+import abibatou1 from "@/assets/abibatou-1.jpg";
+import abibatou2 from "@/assets/abibatou-2.jpg";
+import neneBella1 from "@/assets/nene-bella-1.jpg";
+import neneBella2 from "@/assets/nene-bella-2.jpg";
 
 export interface MockProduct {
   node: {
@@ -89,6 +99,11 @@ export const mockProducts: MockProduct[] = [
   makeProduct("38", "Fatima", "fatima", "22000", "lingerie-sexy", "Body Fatima en dentelle florale transparente avec franges. Sensualité et raffinement.", [fatima1, fatima2]),
   makeProduct("39", "Codou", "codou", "25000", "lingerie-sexy", "Déshabillé Codou en voile transparent brodé de fleurs rouges et noires. Élégance absolue.", [codou1, codou2]),
   makeProduct("40", "Maguette", "maguette", "23000", "lingerie-sexy", "Nuisette longue Maguette en dentelle noire avec dos nu. Glamour et sophistication.", [maguette1, maguette2]),
+  makeProduct("41", "Bintou", "bintou", "22000", "lingerie-sexy", "Déshabillé Bintou en tulle noir brodé de fleurs. Transparence et élégance sensuelle.", [bintou1, bintou2]),
+  makeProduct("42", "Marième", "marieme", "25000", "lingerie-sexy", "Peignoir Marième en voile blanc avec manches papillon en dentelle florale. Romantisme absolu.", [marieme1, marieme2]),
+  makeProduct("43", "Coura", "coura", "24000", "lingerie-sexy", "Kimono Coura en mousseline rouge avec broderies dorées et dos ouvert en cœur. Passion et audace.", [coura1, coura2]),
+  makeProduct("44", "Abibatou", "abibatou", "20000", "lingerie-sexy", "Robe transparente Abibatou en dentelle blanche avec col halter et fente latérale. Charme irrésistible.", [abibatou1, abibatou2]),
+  makeProduct("45", "Néné Bella", "nene-bella", "23000", "lingerie-sexy", "Déshabillé Néné Bella en voile blanc avec décolleté plongeant et dentelle délicate. Glamour festif.", [neneBella1, neneBella2]),
 
   // ─── Robes ───
   makeProduct("9", "Robe Wax Élégance Ankara", "robe-wax-elegance", "28000", "robe", "Robe longue en wax premium motif Ankara. Coupe ajustée avec évasement en bas.", [collectionRobe, collectionPagne]),
