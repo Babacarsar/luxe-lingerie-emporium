@@ -6,24 +6,12 @@ import { CartDrawer } from "@/components/CartDrawer";
 import { motion, AnimatePresence } from "framer-motion";
 import logoJofa from "@/assets/logo-jofa.png";
 
-const lingerieSubLinks = [
-  { label: "Lingerie Fines", to: "/boutique?cat=lingerie-fines" },
-  { label: "Robes Confort", to: "/boutique?cat=robes-confort" },
-  { label: "Pagne", to: "/boutique?cat=pagne" },
-];
-
-const binbinSubLinks = [
-  { label: "Épais", to: "/boutique?cat=binbin-epaisses" },
-  { label: "Fin", to: "/boutique?cat=binbin-fins" },
-];
-
 const navLinks = [
   { label: "Accueil", to: "/" },
-  { label: "Lingerie", to: "/boutique", hasSubmenu: "lingerie" },
-  { label: "Thiouraye", to: "/boutique?cat=thiouraye" },
-  { label: "Bine Bine", to: "/boutique?cat=binbin", hasSubmenu: "binbin" },
-  { label: "Guide des Tailles", to: "/guide-des-tailles" },
+  { label: "Boutique", to: "/boutique" },
+  { label: "À propos", to: "/a-propos" },
   { label: "Contact", to: "/contact" },
+  { label: "Guide des Tailles", to: "/guide-des-tailles" },
   { label: "FAQ", to: "/faq" },
 ];
 
