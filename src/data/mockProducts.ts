@@ -34,6 +34,15 @@ import abibatou1 from "@/assets/abibatou-1.jpg";
 import abibatou2 from "@/assets/abibatou-2.jpg";
 import neneBella1 from "@/assets/nene-bella-1.jpg";
 import neneBella2 from "@/assets/nene-bella-2.jpg";
+import soukeyna1 from "@/assets/soukeyna-1.jpg";
+import soukeyna2 from "@/assets/soukeyna-2.jpg";
+import soukeyna3 from "@/assets/soukeyna-3.jpg";
+import gnilane1 from "@/assets/gnilane-1.jpg";
+import gnilane2 from "@/assets/gnilane-2.jpg";
+import gnilane3 from "@/assets/gnilane-3.jpg";
+import dior1 from "@/assets/dior-1.jpg";
+import dior2 from "@/assets/dior-2.jpg";
+import dior3 from "@/assets/dior-3.jpg";
 
 export interface MockProduct {
   node: {
@@ -112,6 +121,9 @@ export const mockProducts: MockProduct[] = [
   makeProduct("12", "Robe Longue Kente Multicolore", "robe-kente-multicolore", "32000", "robe", "Robe majestueuse en tissu Kente authentique. Épaules structurées et jupe ample.", [collectionPagne, collectionRobe]),
   makeProduct("13", "Robe Fourreau Velours Bordeaux", "robe-fourreau-velours", "30000", "robe", "Robe fourreau en velours bordeaux, manches 3/4 et col bateau.", [editorial2, collectionRobe]),
   makeProduct("14", "Robe Midi Imprimé Léopard", "robe-midi-leopard", "22000", "robe", "Robe midi fluide avec imprimé léopard revisité en tons dorés et noirs.", [collectionRobe, editorial1]),
+  makeProduct("46", "Soukeyna", "soukeyna", "28000", "robe", "Robe confort Soukeyna en satin blanc avec bretelles en dentelle noire brodée et dos nu élégant. Raffinement et douceur.", [soukeyna1, soukeyna2, soukeyna3]),
+  makeProduct("47", "Gnilane", "gnilane", "30000", "robe", "Robe confort Gnilane en satin blanc avec bustier en dentelle fine et dos ouvert. Élégance romantique.", [gnilane1, gnilane2, gnilane3]),
+  makeProduct("48", "Dior", "dior", "32000", "robe", "Robe confort Dior en tulle doré avec motif craquelé et broderies florales. Glamour et sophistication.", [dior1, dior2, dior3]),
 
   // ─── Pagnes ───
   makeProduct("15", "Pagne Traditionnel Kita Premium", "pagne-kita-premium", "18000", "pagne", "Pagne kita en coton premium tissé main. 6 yards, couleurs vives garanties.", [collectionPagne, collectionRobe]),
