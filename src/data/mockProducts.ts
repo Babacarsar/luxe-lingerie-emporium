@@ -34,6 +34,15 @@ import abibatou1 from "@/assets/abibatou-1.jpg";
 import abibatou2 from "@/assets/abibatou-2.jpg";
 import neneBella1 from "@/assets/nene-bella-1.jpg";
 import neneBella2 from "@/assets/nene-bella-2.jpg";
+import soukeyna1 from "@/assets/soukeyna-1.jpg";
+import soukeyna2 from "@/assets/soukeyna-2.jpg";
+import soukeyna3 from "@/assets/soukeyna-3.jpg";
+import gnilane1 from "@/assets/gnilane-1.jpg";
+import gnilane2 from "@/assets/gnilane-2.jpg";
+import gnilane3 from "@/assets/gnilane-3.jpg";
+import dior1 from "@/assets/dior-1.jpg";
+import dior2 from "@/assets/dior-2.jpg";
+import dior3 from "@/assets/dior-3.jpg";
 
 export interface MockProduct {
   node: {
