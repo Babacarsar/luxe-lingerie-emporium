@@ -127,19 +127,6 @@ export const Header = () => {
                   >
                     {link.label}
                   </Link>
-                  {link.hasSubmenu && (
-                    <div className="pl-12 flex flex-col">
-                      {(link.hasSubmenu === "lingerie" ? lingerieSubLinks : binbinSubLinks).map((sub) => (
-                        <Link
-                          key={sub.to}
-                          to={sub.to}
-                          className="block py-2 text-[10px] font-body uppercase tracking-[0.15em] text-foreground/40 hover:text-foreground transition-colors"
-                        >
-                          {sub.label}
-                        </Link>
-                      ))}
-                    </div>
-                  )}
                 </motion.div>
               ))}
               {/* Mobile search */}
