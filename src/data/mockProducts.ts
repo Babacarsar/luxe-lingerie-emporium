@@ -16,6 +16,14 @@ import editorial1 from "@/assets/editorial-1.jpg";
 import editorial2 from "@/assets/editorial-2.jpg";
 import khadija1 from "@/assets/khadija-1.jpg";
 import khadija2 from "@/assets/khadija-2.jpg";
+import salimata1 from "@/assets/salimata-1.jpg";
+import salimata2 from "@/assets/salimata-2.jpg";
+import fatima1 from "@/assets/fatima-1.jpg";
+import fatima2 from "@/assets/fatima-2.jpg";
+import codou1 from "@/assets/codou-1.jpg";
+import codou2 from "@/assets/codou-2.jpg";
+import maguette1 from "@/assets/maguette-1.jpg";
+import maguette2 from "@/assets/maguette-2.jpg";
 
 export interface MockProduct {
   node: {
