@@ -6,24 +6,12 @@ import { CartDrawer } from "@/components/CartDrawer";
 import { motion, AnimatePresence } from "framer-motion";
 import logoJofa from "@/assets/logo-jofa.png";
 
-const lingerieSubLinks = [
-  { label: "Lingerie Fines", to: "/boutique?cat=lingerie-fines" },
-  { label: "Robes Confort", to: "/boutique?cat=robes-confort" },
-  { label: "Pagne", to: "/boutique?cat=pagne" },
-];
-
-const binbinSubLinks = [
-  { label: "Épais", to: "/boutique?cat=binbin-epaisses" },
-  { label: "Fin", to: "/boutique?cat=binbin-fins" },
-];
-
 const navLinks = [
   { label: "Accueil", to: "/" },
-  { label: "Lingerie", to: "/boutique", hasSubmenu: "lingerie" },
-  { label: "Thiouraye", to: "/boutique?cat=thiouraye" },
-  { label: "Bine Bine", to: "/boutique?cat=binbin", hasSubmenu: "binbin" },
-  { label: "Guide des Tailles", to: "/guide-des-tailles" },
+  { label: "Boutique", to: "/boutique" },
+  { label: "À propos", to: "/a-propos" },
   { label: "Contact", to: "/contact" },
+  { label: "Guide des Tailles", to: "/guide-des-tailles" },
   { label: "FAQ", to: "/faq" },
 ];
 
@@ -77,45 +65,17 @@ export const Header = () => {
         {/* Nav links (desktop) */}
         <nav className="hidden md:flex items-center gap-6">
           {navLinks.map((link) => (
-            link.hasSubmenu ? (
-              <div key={link.to} className="relative group">
-                <Link
-                  to={link.to}
-                  className={`text-[11px] font-body uppercase tracking-[0.2em] transition-colors duration-300 ${
-                    location.pathname === link.to
-                      ? "text-primary"
-                      : "text-foreground/50 hover:text-foreground"
-                  }`}
-                >
-                  {link.label}
-                </Link>
-                <div className="absolute top-full left-0 pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
-                  <div className="bg-background border border-border rounded-md shadow-lg py-2 min-w-[160px]">
-                    {(link.hasSubmenu === "lingerie" ? lingerieSubLinks : binbinSubLinks).map((sub) => (
-                      <Link
-                        key={sub.to}
-                        to={sub.to}
-                        className="block px-4 py-2 text-[11px] font-body uppercase tracking-[0.15em] text-foreground/60 hover:text-foreground hover:bg-muted transition-colors"
-                      >
-                        {sub.label}
-                      </Link>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            ) : (
-              <Link
-                key={link.to}
-                to={link.to}
-                className={`text-[11px] font-body uppercase tracking-[0.2em] transition-colors duration-300 ${
-                  location.pathname === link.to
-                    ? "text-primary"
-                    : "text-foreground/50 hover:text-foreground"
-                }`}
-              >
-                {link.label}
-              </Link>
-            )
+            <Link
+              key={link.to}
+              to={link.to}
+              className={`text-[11px] font-body uppercase tracking-[0.2em] transition-colors duration-300 ${
+                location.pathname === link.to
+                  ? "text-primary"
+                  : "text-foreground/50 hover:text-foreground"
+              }`}
+            >
+              {link.label}
+            </Link>
           ))}
         </nav>
 
@@ -167,19 +127,6 @@ export const Header = () => {
                   >
                     {link.label}
                   </Link>
-                  {link.hasSubmenu && (
-                    <div className="pl-12 flex flex-col">
-                      {(link.hasSubmenu === "lingerie" ? lingerieSubLinks : binbinSubLinks).map((sub) => (
-                        <Link
-                          key={sub.to}
-                          to={sub.to}
-                          className="block py-2 text-[10px] font-body uppercase tracking-[0.15em] text-foreground/40 hover:text-foreground transition-colors"
-                        >
-                          {sub.label}
-                        </Link>
-                      ))}
-                    </div>
-                  )}
                 </motion.div>
               ))}
               {/* Mobile search */}
