@@ -6,10 +6,20 @@ interface ProductGridProps {
   title?: string;
   limit?: number;
   category?: string;
+  searchQuery?: string;
 }
 
-export const ProductGrid = ({ title, limit = 20, category }: ProductGridProps) => {
-  const products = getMockProducts(category).slice(0, limit);
+export const ProductGrid = ({ title, limit = 20, category, searchQuery }: ProductGridProps) => {
+  let products = getMockProducts(category).slice(0, limit);
+
+  if (searchQuery) {
+    const q = searchQuery.toLowerCase();
+    products = products.filter(p =>
+      p.node.title.toLowerCase().includes(q) ||
+      p.node.description.toLowerCase().includes(q) ||
+      p.node.productType.toLowerCase().includes(q)
+    );
+  }
 
   return (
     <section className="container py-16 md:py-24">
@@ -21,7 +31,7 @@ export const ProductGrid = ({ title, limit = 20, category }: ProductGridProps) =
       )}
       {products.length === 0 ? (
         <div className="text-center py-24">
-          <p className="text-muted-foreground font-body text-base">Aucun produit trouvé dans cette catégorie.</p>
+          <p className="text-muted-foreground font-body text-base">Aucun produit trouvé{searchQuery ? ` pour "${searchQuery}"` : " dans cette catégorie"}.</p>
         </div>
       ) : (
         <motion.div

@@ -1,5 +1,5 @@
-import { useState, useEffect } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { useState, useEffect, FormEvent } from "react";
+import { Link, useLocation, useNavigate, useSearchParams } from "react-router-dom";
 import { Menu, X, User, Search } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { CartDrawer } from "@/components/CartDrawer";
@@ -18,7 +18,18 @@ const navLinks = [
 export const Header = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [searchParams] = useSearchParams();
+  const [searchQuery, setSearchQuery] = useState(searchParams.get("search") || "");
   const location = useLocation();
+  const navigate = useNavigate();
+
+  const handleSearch = (e: FormEvent) => {
+    e.preventDefault();
+    if (searchQuery.trim()) {
+      navigate(`/boutique?search=${encodeURIComponent(searchQuery.trim())}`);
+      setMobileOpen(false);
+    }
+  };
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 50);
@@ -27,6 +38,11 @@ export const Header = () => {
   }, []);
 
   useEffect(() => setMobileOpen(false), [location]);
+
+  // Sync search input with URL param
+  useEffect(() => {
+    setSearchQuery(searchParams.get("search") || "");
+  }, [searchParams]);
 
   const isHome = location.pathname === "/";
   const showBg = scrolled || !isHome;
@@ -40,7 +56,6 @@ export const Header = () => {
       }`}
     >
       <div className="container flex items-center justify-between h-16 md:h-20">
-        {/* Left side: mobile menu + logo */}
         <div className="flex items-center gap-4">
           <Button
             variant="ghost"
@@ -62,7 +77,6 @@ export const Header = () => {
           </Link>
         </div>
 
-        {/* Nav links (desktop) */}
         <nav className="hidden md:flex items-center gap-6">
           {navLinks.map((link) => (
             <Link
@@ -79,17 +93,18 @@ export const Header = () => {
           ))}
         </nav>
 
-        {/* Right side: search, cart, account */}
         <div className="flex items-center gap-3">
-          <div className="relative hidden sm:block">
+          <form onSubmit={handleSearch} className="relative hidden sm:block">
             <Search className="absolute left-2.5 top-1/2 -translate-y-1/2 h-4 w-4 text-foreground/40" />
             <input
               type="text"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
               placeholder="Rechercher..."
               className="h-8 w-40 rounded-full border border-border bg-background/50 pl-8 pr-3 text-xs text-foreground placeholder:text-foreground/40 focus:outline-none focus:ring-1 focus:ring-primary transition-all"
             />
-          </div>
-          <Button variant="ghost" size="icon" className="sm:hidden text-foreground/50 hover:text-foreground">
+          </form>
+          <Button variant="ghost" size="icon" className="sm:hidden text-foreground/50 hover:text-foreground" onClick={() => setMobileOpen(true)}>
             <Search className="h-5 w-5" />
           </Button>
           <CartDrawer />
@@ -99,7 +114,6 @@ export const Header = () => {
         </div>
       </div>
 
-      {/* Mobile menu */}
       <AnimatePresence>
         {mobileOpen && (
           <motion.div
@@ -129,16 +143,17 @@ export const Header = () => {
                   </Link>
                 </motion.div>
               ))}
-              {/* Mobile search */}
               <div className="px-8 pt-4">
-                <div className="relative">
+                <form onSubmit={handleSearch} className="relative">
                   <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-foreground/40" />
                   <input
                     type="text"
+                    value={searchQuery}
+                    onChange={(e) => setSearchQuery(e.target.value)}
                     placeholder="Rechercher..."
                     className="w-full h-9 rounded-full border border-border bg-background/50 pl-9 pr-4 text-xs text-foreground placeholder:text-foreground/40 focus:outline-none focus:ring-1 focus:ring-primary"
                   />
-                </div>
+                </form>
               </div>
             </nav>
           </motion.div>
