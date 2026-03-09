@@ -95,14 +95,6 @@ const makeProduct = (
 
 export const mockProducts: MockProduct[] = [
   // ─── Lingerie Sexy ───
-  makeProduct("1", "Ensemble Dentelle Noire Séduction", "ensemble-dentelle-noire", "15000", "lingerie-sexy", "Ensemble lingerie en dentelle noire délicate avec détails dorés. Soutien-gorge push-up et culotte assortie.", [collectionLingerie, editorial1]),
-  makeProduct("2", "Body Satin Bordeaux", "body-satin-bordeaux", "18000", "lingerie-sexy", "Body en satin bordeaux avec dos nu plongeant et finitions en dentelle Chantilly.", [collectionBodys, editorial2]),
-  makeProduct("3", "Nuisette Soie Champagne", "nuisette-soie-champagne", "22000", "lingerie-sexy", "Nuisette longue en soie champagne avec fente latérale et broderies artisanales.", [collectionNuisettes, collectionLingerie]),
-  makeProduct("4", "Ensemble Floral Rose Poudré", "ensemble-floral-rose", "14000", "lingerie-sexy", "Ensemble deux pièces en dentelle florale rose poudré. Confort et élégance au quotidien.", [editorial1, collectionEnsembles]),
-  makeProduct("5", "Corset Velours Émeraude", "corset-velours-emeraude", "25000", "lingerie-sexy", "Corset structuré en velours émeraude avec baleines souples et laçage dos.", [editorial2, collectionLingerie]),
-  makeProduct("6", "Guêpière Dentelle Ivoire", "guepiere-dentelle-ivoire", "20000", "lingerie-sexy", "Guêpière romantique en dentelle ivoire, parfaite pour les occasions spéciales.", [collectionEnsembles, editorial1]),
-  makeProduct("7", "Ensemble Sport Chic Noir", "ensemble-sport-chic", "12000", "lingerie-sexy", "Brassière et shorty en microfibre noire avec bandes élastiques dorées.", [collectionBodys, collectionLingerie]),
-  makeProduct("8", "Babydoll Mousseline Lavande", "babydoll-mousseline-lavande", "16000", "lingerie-sexy", "Babydoll aérien en mousseline lavande avec nœud satin et culotte string assortie.", [collectionNuisettes, editorial2]),
   makeProduct("36", "Khadija", "khadija", "20000", "lingerie-sexy", "Lingerie Khadija en dentelle noire transparente avec franges et détails raffinés. Élégance et sensualité.", [khadija1, khadija2]),
   makeProduct("37", "Salimata", "salimata", "20000", "lingerie-sexy", "Ensemble Salimata en dentelle noire avec franges et perles. Un look audacieux et glamour.", [salimata1, salimata2]),
   makeProduct("38", "Fatima", "fatima", "22000", "lingerie-sexy", "Body Fatima en dentelle florale transparente avec franges. Sensualité et raffinement.", [fatima1, fatima2]),
@@ -115,12 +107,6 @@ export const mockProducts: MockProduct[] = [
   makeProduct("45", "Néné Bella", "nene-bella", "23000", "lingerie-sexy", "Déshabillé Néné Bella en voile blanc avec décolleté plongeant et dentelle délicate. Glamour festif.", [neneBella1, neneBella2]),
 
   // ─── Robes ───
-  makeProduct("9", "Robe Wax Élégance Ankara", "robe-wax-elegance", "28000", "robe", "Robe longue en wax premium motif Ankara. Coupe ajustée avec évasement en bas.", [collectionRobe, collectionPagne]),
-  makeProduct("10", "Robe Cocktail Satin Or", "robe-cocktail-satin-or", "35000", "robe", "Robe de cocktail en satin doré avec drapé asymétrique et dos nu.", [editorial1, collectionRobe]),
-  makeProduct("11", "Robe Chemise Bazin Blanc", "robe-chemise-bazin", "24000", "robe", "Robe chemise en bazin riche blanc brodé. Ceinture amovible en tissu assorti.", [collectionRobe, editorial2]),
-  makeProduct("12", "Robe Longue Kente Multicolore", "robe-kente-multicolore", "32000", "robe", "Robe majestueuse en tissu Kente authentique. Épaules structurées et jupe ample.", [collectionPagne, collectionRobe]),
-  makeProduct("13", "Robe Fourreau Velours Bordeaux", "robe-fourreau-velours", "30000", "robe", "Robe fourreau en velours bordeaux, manches 3/4 et col bateau.", [editorial2, collectionRobe]),
-  makeProduct("14", "Robe Midi Imprimé Léopard", "robe-midi-leopard", "22000", "robe", "Robe midi fluide avec imprimé léopard revisité en tons dorés et noirs.", [collectionRobe, editorial1]),
   makeProduct("46", "Soukeyna", "soukeyna", "28000", "robe", "Robe confort Soukeyna en satin blanc avec bretelles en dentelle noire brodée et dos nu élégant. Raffinement et douceur.", [soukeyna1, soukeyna2, soukeyna3]),
   makeProduct("47", "Gnilane", "gnilane", "30000", "robe", "Robe confort Gnilane en satin blanc avec bustier en dentelle fine et dos ouvert. Élégance romantique.", [gnilane1, gnilane2, gnilane3]),
   makeProduct("48", "Dior", "dior", "32000", "robe", "Robe confort Dior en tulle doré avec motif craquelé et broderies florales. Glamour et sophistication.", [dior1, dior2, dior3]),
