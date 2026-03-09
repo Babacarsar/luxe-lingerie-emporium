@@ -98,13 +98,14 @@ export const Header = () => {
                 >
                   {link.label}
                 </Link>
-                <div className="absolute top-full left-0 pt-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
-                  <div className="bg-background border border-border rounded-md shadow-lg py-2 min-w-[160px]">
-                    {boutiqueSubLinks.map((sub) => (
+                <div className="absolute top-full left-0 pt-2 opacity-0 invisible translate-y-2 group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 transition-all duration-300 ease-out z-50">
+                  <div className="bg-background border border-border rounded-md shadow-lg py-2 min-w-[160px] origin-top scale-y-95 group-hover:scale-y-100 transition-transform duration-300 ease-out">
+                    {boutiqueSubLinks.map((sub, idx) => (
                       <Link
                         key={sub.to}
                         to={sub.to}
-                        className="block px-4 py-2 text-[11px] font-body uppercase tracking-[0.15em] text-foreground/60 hover:text-foreground hover:bg-muted transition-colors"
+                        className="block px-4 py-2 text-[11px] font-body uppercase tracking-[0.15em] text-foreground/60 hover:text-foreground hover:bg-muted transition-all duration-200"
+                        style={{ transitionDelay: `${idx * 30}ms` }}
                       >
                         {sub.label}
                       </Link>
