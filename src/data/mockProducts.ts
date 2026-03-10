@@ -140,16 +140,8 @@ export const mockProducts: MockProduct[] = [
   makeProduct("25", "Thiouraye Rose du Sahel", "thiouraye-rose-sahel", "11000", "thiouraye", "Fragrance rare à base de rose du Sahel et de bois précieux africains.", [thiouraye1, thiouraye3], ["50g", "100g"]),
 
   // ─── Bin Bin ───
-  makeProduct("26", "Bin Bin Dorées Classiques", "binbin-dorees-classiques", "5000", "binbin", "Perles de taille dorées classiques. Fil élastique résistant à l'eau.", [binBin1, binBin2], ["S (60-70cm)", "M (70-80cm)", "L (80-90cm)", "XL (90-100cm)"]),
-  makeProduct("27", "Bin Bin Cristal Multicolore", "binbin-cristal-multicolore", "7000", "binbin", "Perles de cristal multicolores montées sur fil de nylon. Éclat unique.", [binBin2, binBin3], ["S (60-70cm)", "M (70-80cm)", "L (80-90cm)"]),
-  makeProduct("28", "Bin Bin Épaisses Rouge Passion", "binbin-epaisses-rouge", "8000", "binbin-epaisses", "Grosses perles rouges avec intercalaires dorés. Style audacieux.", [binBin3, binBin1], ["S (60-70cm)", "M (70-80cm)", "L (80-90cm)", "XL (90-100cm)"]),
-  makeProduct("29", "Bin Bin Fins Nacre", "binbin-fins-nacre", "6000", "binbin-fins", "Fines perles nacrées discrètes. Parfaites au quotidien.", [binBin1, binBin3], ["S (60-70cm)", "M (70-80cm)", "L (80-90cm)"]),
-  makeProduct("30", "Lot 3 Bin Bin Assortis", "lot-binbin-assorti", "12000", "binbin", "Ensemble de 3 rangs de perles aux couleurs complémentaires.", [binBin2, binBin1], ["S (60-70cm)", "M (70-80cm)", "L (80-90cm)"]),
-  makeProduct("31", "Bin Bin Épaisses Turquoise & Or", "binbin-epaisses-turquoise", "9000", "binbin-epaisses", "Grosses perles turquoise avec accent or. Collection été.", [binBin3, binBin2], ["S (60-70cm)", "M (70-80cm)", "L (80-90cm)", "XL (90-100cm)"]),
-  makeProduct("32", "Bin Bin Fins Transparents", "binbin-fins-transparents", "4000", "binbin-fins", "Perles transparentes ultra-discrètes. Invisibles sous les vêtements.", [binBin1, binBin2], ["S (60-70cm)", "M (70-80cm)", "L (80-90cm)"]),
-  makeProduct("33", "Bin Bin Cauris & Perles Bois", "binbin-cauris-bois", "10000", "binbin", "Authentiques cauris et perles en bois d'ébène. Style ethnique chic.", [binBin2, binBin3], ["S (60-70cm)", "M (70-80cm)", "L (80-90cm)"]),
-  makeProduct("34", "Bin Bin Épaisses Noir & Argent", "binbin-epaisses-noir-argent", "8500", "binbin-epaisses", "Perles noires mates avec intercalaires argent. Look sophistiqué.", [binBin3, binBin1], ["S (60-70cm)", "M (70-80cm)", "L (80-90cm)", "XL (90-100cm)"]),
-  makeProduct("35", "Bin Bin Personnalisé - Initiales", "binbin-personnalise-initiales", "15000", "binbin", "Bin bin sur mesure avec vos initiales en perles dorées. Commande personnalisée.", [binBin1, binBin2, binBin3], ["S (60-70cm)", "M (70-80cm)", "L (80-90cm)", "XL (90-100cm)"]),
+  makeProduct("51", "Codou", "codou-binbin", "15000", "binbin", "Bin bin Codou en perles rouges, blanches et dorées avec pendentifs figurines et lettres. Audace et passion.", [codouBinbin1, codouBinbin2], ["S (60-70cm)", "M (70-80cm)", "L (80-90cm)", "XL (90-100cm)"]),
+  makeProduct("52", "Marème", "mareme-binbin", "12000", "binbin", "Bin bin Marème en perles noires et ambrées avec chaînettes dorées. Élégance mystérieuse et raffinée.", [mariemeBinbin1, mariemeBinbin2], ["S (60-70cm)", "M (70-80cm)", "L (80-90cm)", "XL (90-100cm)"]),
 ];
 
 const categoryMapping: Record<string, string[]> = {
