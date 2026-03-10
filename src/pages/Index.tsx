@@ -346,7 +346,7 @@ const Index = () => {
               transition={{ duration: 0.8 }}
               className="relative overflow-hidden"
             >
-              <img src={brandStory} alt="L'histoire JOFA" className="w-full h-full object-cover min-h-[400px]" />
+              <img src={brandStory} alt="L'histoire JOFA" loading="lazy" className="w-full h-full object-cover min-h-[400px]" />
               <div className="absolute inset-0 bg-gradient-to-r from-transparent to-background/30 lg:to-background" />
             </motion.div>
 

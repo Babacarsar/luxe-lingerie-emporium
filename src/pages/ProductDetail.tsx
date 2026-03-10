@@ -70,7 +70,7 @@ const ProductDetail = () => {
                   onClick={() => setSelectedImage(i)}
                   className={`w-16 h-16 rounded overflow-hidden border-2 flex-shrink-0 ${i === selectedImage ? "border-primary" : "border-border"}`}
                 >
-                  <img src={img.node.url} alt="" className="w-full h-full object-cover" />
+                  <img src={img.node.url} alt="" loading="lazy" className="w-full h-full object-cover" />
                 </button>
               ))}
             </div>
