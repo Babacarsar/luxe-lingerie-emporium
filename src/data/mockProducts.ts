@@ -119,11 +119,13 @@ export const mockProducts: MockProduct[] = [
   makeProduct("48", "Dior", "dior", "32000", "robe", "Robe confort Dior en tulle doré avec motif craquelé et broderies florales. Glamour et sophistication.", [dior1, dior2, dior3]),
 
   // ─── Pagnes ───
-  makeProduct("15", "Pagne Traditionnel Kita Premium", "pagne-kita-premium", "18000", "pagne", "Pagne kita en coton premium tissé main. 6 yards, couleurs vives garanties.", [collectionPagne, collectionRobe]),
-  makeProduct("16", "Pagne Wax Super Deluxe", "pagne-wax-super-deluxe", "15000", "pagne", "Pagne wax hollandais super deluxe. Motifs floraux exclusifs, 6 yards.", [collectionPagne, editorial1], ["6 yards"]),
-  makeProduct("17", "Pagne Bazin Riche Brodé Or", "pagne-bazin-brode-or", "25000", "pagne", "Bazin riche getzner brodé avec fils dorés. Qualité supérieure pour grandes occasions.", [collectionPagne, collectionRobe], ["3 yards", "6 yards", "12 yards"]),
-  makeProduct("18", "Ensemble 3 Pagnes Assortis", "ensemble-3-pagnes", "35000", "pagne", "Lot de 3 pagnes coordonnés aux motifs complémentaires. Idéal pour créations sur mesure.", [collectionPagne, editorial2], ["Lot 3 pièces"]),
-  makeProduct("19", "Pagne Bogolan Authentique", "pagne-bogolan", "20000", "pagne", "Pagne bogolan fait main au Mali. Teintures naturelles, pièce unique.", [collectionPagne, collectionRobe], ["1 pièce"]),
+  makeProduct("15", "Sophie", "sophie", "18000", "pagne", "Pagne Sophie en tissu bleu ciel avec crochet ajouré et perles violettes. Élégance et fraîcheur.", [sophie1]),
+  makeProduct("16", "Rama", "rama", "20000", "pagne", "Pagne Rama en bazin blanc avec crochet artisanal et bin bin en perles dorées. Raffinement traditionnel.", [rama1]),
+  makeProduct("17", "Sosso", "sosso", "25000", "pagne", "Pagne Sosso en bazin blanc orné de perles cristal et pendentifs. Luxe et sophistication pour grandes occasions.", [sosso1]),
+  makeProduct("18", "Nabou", "nabou", "22000", "pagne", "Pagne Nabou en satin noir avec broderies de perles dorées et bin bin assortis. Élégance audacieuse.", [nabou1]),
+  makeProduct("19", "Ouleye", "ouleye", "28000", "pagne", "Pagne Ouleye en bazin ivoire avec broderies de perles nacrées et broche fleur de lys. Prestige absolu.", [ouleye1]),
+  makeProduct("49", "Mina", "mina", "23000", "pagne", "Pagne Mina en satin blanc avec franges de perles nacrées en cascade. Glamour et féminité.", [mina1]),
+  makeProduct("50", "Oumou", "oumou", "24000", "pagne", "Pagne Oumou en dentelle rouge passion avec franges et bin bin cristal. Audace et sensualité.", [oumou1]),
 
   // ─── Thiouraye ───
   makeProduct("20", "Thiouraye Oud Royal", "thiouraye-oud-royal", "12000", "thiouraye", "Encens premium à base de bois d'oud et de musc. Fragrance envoûtante longue durée.", [thiouraye1, thiouraye2], ["50g", "100g", "200g"]),
