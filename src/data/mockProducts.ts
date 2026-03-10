@@ -144,6 +144,9 @@ export const mockProducts: MockProduct[] = [
   // ─── Bin Bin ───
   makeProduct("51", "Codou", "codou-binbin", "15000", "binbin", "Bin bin Codou en perles rouges, blanches et dorées avec pendentifs figurines et lettres. Audace et passion.", [codouBinbin1, codouBinbin2], ["S (60-70cm)", "M (70-80cm)", "L (80-90cm)", "XL (90-100cm)"]),
   makeProduct("52", "Marème", "mareme-binbin", "12000", "binbin", "Bin bin Marème en perles noires et ambrées avec chaînettes dorées. Élégance mystérieuse et raffinée.", [mariemeBinbin1, mariemeBinbin2], ["S (60-70cm)", "M (70-80cm)", "L (80-90cm)", "XL (90-100cm)"]),
+  makeProduct("53", "Awa", "awa-binbin", "18000", "binbin", "Bin bin Awa en perles bordeaux et cristal doré avec chaînette pendentif et pagne assorti. Luxe traditionnel.", [awaBinbin1, awaBinbin2], ["S (60-70cm)", "M (70-80cm)", "L (80-90cm)", "XL (90-100cm)"]),
+  makeProduct("54", "Ndèye", "ndeye-binbin", "14000", "binbin", "Bin bin Ndèye en perles bleu royal et turquoise avec pendentif œil protecteur. Mystère et beauté.", [ndeyeBinbin1, ndeyeBinbin2], ["S (60-70cm)", "M (70-80cm)", "L (80-90cm)", "XL (90-100cm)"]),
+  makeProduct("55", "Kiné", "kine-binbin", "16000", "binbin", "Bin bin Kiné en perles noires avec trèfles dorés et papillons nacrés. Chic et sophistiqué.", [kineBinbin1], ["S (60-70cm)", "M (70-80cm)", "L (80-90cm)", "XL (90-100cm)"]),
 ];
 
 const categoryMapping: Record<string, string[]> = {
