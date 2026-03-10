@@ -196,7 +196,7 @@ const Index = () => {
               <img src={editorial1} alt="JOFA Editorial" loading="lazy" className="w-full h-[500px] md:h-[700px] object-cover hover:scale-105 transition-transform duration-700" />
             </motion.div>
             <motion.div variants={fadeUp} transition={{ duration: 0.7 }} className="overflow-hidden">
-              <img src={editorial2} alt="JOFA Editorial" className="w-full h-[500px] md:h-[700px] object-cover hover:scale-105 transition-transform duration-700" />
+              <img src={editorial2} alt="JOFA Editorial" loading="lazy" className="w-full h-[500px] md:h-[700px] object-cover hover:scale-105 transition-transform duration-700" />
             </motion.div>
           </motion.div>
         </div>
