@@ -57,7 +57,7 @@ const ProductDetail = () => {
         <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} className="space-y-3">
           <div className="aspect-[3/4] rounded-lg overflow-hidden bg-secondary border border-border">
             {images[selectedImage]?.node ? (
-              <img src={images[selectedImage].node.url} alt={images[selectedImage].node.altText || product.title} className="w-full h-full object-cover" />
+              <img src={images[selectedImage].node.url} alt={images[selectedImage].node.altText || product.title} loading="lazy" className="w-full h-full object-cover" />
             ) : (
               <div className="w-full h-full flex items-center justify-center text-muted-foreground">Pas d'image</div>
             )}
@@ -70,7 +70,7 @@ const ProductDetail = () => {
                   onClick={() => setSelectedImage(i)}
                   className={`w-16 h-16 rounded overflow-hidden border-2 flex-shrink-0 ${i === selectedImage ? "border-primary" : "border-border"}`}
                 >
-                  <img src={img.node.url} alt="" className="w-full h-full object-cover" />
+                  <img src={img.node.url} alt="" loading="lazy" className="w-full h-full object-cover" />
                 </button>
               ))}
             </div>

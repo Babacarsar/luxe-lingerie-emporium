@@ -193,10 +193,10 @@ const Index = () => {
             className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6"
           >
             <motion.div variants={fadeUp} transition={{ duration: 0.7 }} className="overflow-hidden">
-              <img src={editorial1} alt="JOFA Editorial" className="w-full h-[500px] md:h-[700px] object-cover hover:scale-105 transition-transform duration-700" />
+              <img src={editorial1} alt="JOFA Editorial" loading="lazy" className="w-full h-[500px] md:h-[700px] object-cover hover:scale-105 transition-transform duration-700" />
             </motion.div>
             <motion.div variants={fadeUp} transition={{ duration: 0.7 }} className="overflow-hidden">
-              <img src={editorial2} alt="JOFA Editorial" className="w-full h-[500px] md:h-[700px] object-cover hover:scale-105 transition-transform duration-700" />
+              <img src={editorial2} alt="JOFA Editorial" loading="lazy" className="w-full h-[500px] md:h-[700px] object-cover hover:scale-105 transition-transform duration-700" />
             </motion.div>
           </motion.div>
         </div>
@@ -346,7 +346,7 @@ const Index = () => {
               transition={{ duration: 0.8 }}
               className="relative overflow-hidden"
             >
-              <img src={brandStory} alt="L'histoire JOFA" className="w-full h-full object-cover min-h-[400px]" />
+              <img src={brandStory} alt="L'histoire JOFA" loading="lazy" className="w-full h-full object-cover min-h-[400px]" />
               <div className="absolute inset-0 bg-gradient-to-r from-transparent to-background/30 lg:to-background" />
             </motion.div>
 
