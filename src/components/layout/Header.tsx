@@ -145,9 +145,7 @@ export const Header = () => {
             <Search className="h-5 w-5" />
           </Button>
           <CartDrawer />
-          <Link to="/mes-commandes" className="text-foreground/50 hover:text-foreground transition-colors">
-            <User className="h-5 w-5" />
-          </Link>
+          <AccountDropdown />
         </div>
       </div>
 
