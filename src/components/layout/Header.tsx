@@ -1,10 +1,11 @@
 import { useState, useEffect, FormEvent } from "react";
 import { Link, useLocation, useNavigate, useSearchParams } from "react-router-dom";
-import { Menu, X, User, Search } from "lucide-react";
+import { Menu, X, Search } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { CartDrawer } from "@/components/CartDrawer";
 import { motion, AnimatePresence } from "framer-motion";
 import logoJofa from "@/assets/logo-jofa.png";
+import { AccountDropdown } from "@/components/AccountDropdown";
 
 const boutiqueSubLinks = [
   { label: "Lingerie Sexy", to: "/boutique?cat=lingerie-sexy" },
@@ -144,9 +145,7 @@ export const Header = () => {
             <Search className="h-5 w-5" />
           </Button>
           <CartDrawer />
-          <Link to="/mes-commandes" className="text-foreground/50 hover:text-foreground transition-colors">
-            <User className="h-5 w-5" />
-          </Link>
+          <AccountDropdown />
         </div>
       </div>
 
