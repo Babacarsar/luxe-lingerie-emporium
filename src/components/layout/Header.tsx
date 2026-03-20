@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { CartDrawer } from "@/components/CartDrawer";
 import { motion, AnimatePresence } from "framer-motion";
 import logoJofa from "@/assets/logo-jofa.png";
+import { AccountDropdown } from "@/components/AccountDropdown";
 
 const boutiqueSubLinks = [
   { label: "Lingerie Sexy", to: "/boutique?cat=lingerie-sexy" },
