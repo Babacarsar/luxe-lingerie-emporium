@@ -1,6 +1,6 @@
 import { ProductCard } from "./ProductCard";
 import { motion } from "framer-motion";
-import { getMockProducts, type MockProduct } from "@/data/mockProducts";
+import { useCatalog } from "@/hooks/useCatalog";
 
 interface ProductGridProps {
   title?: string;
