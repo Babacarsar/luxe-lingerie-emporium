@@ -17,6 +17,7 @@ import About from "./pages/About";
 import SizeGuide from "./pages/SizeGuide";
 import Contact from "./pages/Contact";
 import FAQ from "./pages/FAQ";
+import Admin from "./pages/Admin";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -39,7 +40,9 @@ const AppLayout = () => {
           <Route path="/guide-des-tailles" element={<SizeGuide />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/faq" element={<FAQ />} />
+          <Route path="/admin" element={<Admin />} />
           <Route path="*" element={<NotFound />} />
+
         </Routes>
       </main>
       <Footer />

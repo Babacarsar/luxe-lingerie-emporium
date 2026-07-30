@@ -13,7 +13,7 @@ const ProductDetail = () => {
   const [selectedVariantIdx, setSelectedVariantIdx] = useState(0);
   const [selectedImage, setSelectedImage] = useState(0);
 
-  const product = handle ? getMockProductByHandle(handle) : null;
+  const { product } = useCatalogProduct(handle);
 
   if (!product) {
     return (
