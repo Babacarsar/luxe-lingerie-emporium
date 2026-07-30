@@ -1,6 +1,6 @@
 import { ProductCard } from "./ProductCard";
 import { motion } from "framer-motion";
-import { getMockProducts, type MockProduct } from "@/data/mockProducts";
+import { useCatalog } from "@/hooks/useCatalog";
 
 interface ProductGridProps {
   title?: string;
@@ -10,7 +10,8 @@ interface ProductGridProps {
 }
 
 export const ProductGrid = ({ title, limit = 20, category, searchQuery }: ProductGridProps) => {
-  let products = getMockProducts(category).slice(0, limit);
+  const { products: all } = useCatalog(category);
+  let products = all.slice(0, limit);
 
   if (searchQuery) {
     const q = searchQuery.toLowerCase();

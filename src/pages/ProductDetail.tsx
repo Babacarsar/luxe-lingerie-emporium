@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useParams, Link } from "react-router-dom";
-import { getMockProductByHandle } from "@/data/mockProducts";
+import { useCatalogProduct } from "@/hooks/useCatalog";
 import { useCartStore } from "@/stores/cartStore";
 import { Button } from "@/components/ui/button";
 import { ShoppingCart, ChevronLeft } from "lucide-react";
@@ -13,7 +13,7 @@ const ProductDetail = () => {
   const [selectedVariantIdx, setSelectedVariantIdx] = useState(0);
   const [selectedImage, setSelectedImage] = useState(0);
 
-  const product = handle ? getMockProductByHandle(handle) : null;
+  const { product } = useCatalogProduct(handle);
 
   if (!product) {
     return (
