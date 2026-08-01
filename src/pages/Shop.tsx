@@ -59,6 +59,23 @@ const Shop = () => {
               </button>
             ))}
           </motion.div>
+
+          {collections.length > 0 && (
+            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.4, delay: 0.3 }} className="mt-6">
+              <p className="text-center font-body text-[10px] uppercase tracking-[0.35em] text-primary/70 mb-3">Collections</p>
+              <div className="flex flex-wrap justify-center gap-2 md:gap-3">
+                {collections.map((c) => (
+                  <Link
+                    key={c.id}
+                    to={`/collections/${c.handle}`}
+                    className="px-4 py-2 rounded-full text-xs font-body uppercase tracking-[0.15em] border border-primary/40 text-primary hover:bg-primary hover:text-primary-foreground transition-all duration-300"
+                  >
+                    {c.title}
+                  </Link>
+                ))}
+              </div>
+            </motion.div>
+          )}
         </div>
       )}
 
