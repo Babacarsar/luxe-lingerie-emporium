@@ -12,6 +12,7 @@ export interface DbProduct {
   product_type: string;
   sizes: string[];
   images: string[];
+  collections: string[];
   published: boolean;
 }
 
@@ -25,6 +26,7 @@ export function dbProductToMock(p: DbProduct): MockProduct {
       description: p.description || "",
       handle: p.handle,
       productType: p.product_type,
+      collections: p.collections || [],
       priceRange: { minVariantPrice: { amount, currencyCode: p.currency || "XOF" } },
       images: {
         edges: (p.images || []).map((url) => ({ node: { url, altText: p.title } })),
@@ -56,19 +58,27 @@ async function fetchDbProducts(): Promise<MockProduct[]> {
 }
 
 /** Products from the database (admin-managed) merged with the built-in catalog. */
-export function useCatalog(category?: string) {
+export function useCatalog(category?: string, collection?: string) {
   const { data: dbItems = [], isLoading } = useQuery({
     queryKey: ["db-products"],
     queryFn: fetchDbProducts,
     staleTime: 30_000,
   });
 
-  const filteredDb =
-    !category || category === "all"
-      ? dbItems
-      : dbItems.filter((p) => p.node.productType === category);
+  const dbHandles = new Set(dbItems.map((p) => p.node.handle));
 
-  return { products: [...filteredDb, ...getMockProducts(category)], isLoading };
+  let db = dbItems;
+  if (category && category !== "all") {
+    db = db.filter((p) => p.node.productType === category);
+  }
+  if (collection) {
+    db = db.filter((p) => (p.node.collections || []).includes(collection));
+    // Mock products have no collections, so a collection view shows DB items only.
+    return { products: db, isLoading };
+  }
+
+  const mocks = getMockProducts(category).filter((p) => !dbHandles.has(p.node.handle));
+  return { products: [...db, ...mocks], isLoading };
 }
 
 export function useCatalogProduct(handle?: string) {
@@ -78,7 +88,8 @@ export function useCatalogProduct(handle?: string) {
     staleTime: 30_000,
   });
 
-  const all = [...dbItems, ...mockProducts];
+  const dbHandles = new Set(dbItems.map((p) => p.node.handle));
+  const all = [...dbItems, ...mockProducts.filter((p) => !dbHandles.has(p.node.handle))];
   const found = handle ? all.find((p) => p.node.handle === handle) : undefined;
   return { product: found?.node ?? null, isLoading };
 }

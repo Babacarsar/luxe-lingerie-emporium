@@ -6,11 +6,12 @@ interface ProductGridProps {
   title?: string;
   limit?: number;
   category?: string;
+  collection?: string;
   searchQuery?: string;
 }
 
-export const ProductGrid = ({ title, limit = 20, category, searchQuery }: ProductGridProps) => {
-  const { products: all } = useCatalog(category);
+export const ProductGrid = ({ title, limit = 20, category, collection, searchQuery }: ProductGridProps) => {
+  const { products: all } = useCatalog(category, collection);
   let products = all.slice(0, limit);
 
   if (searchQuery) {
