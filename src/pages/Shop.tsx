@@ -1,6 +1,7 @@
-import { useSearchParams } from "react-router-dom";
+import { Link, useSearchParams } from "react-router-dom";
 import { ProductGrid } from "@/components/ProductGrid";
 import { motion } from "framer-motion";
+import { useCollections } from "@/hooks/useCollections";
 
 const categories = [
   { id: "all", label: "Tout" },
@@ -17,6 +18,7 @@ const Shop = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const activeCat = searchParams.get("cat") || "all";
   const searchQuery = searchParams.get("search") || "";
+  const { collections } = useCollections();
 
   const handleCatChange = (cat: string) => {
     if (cat === "all") {
