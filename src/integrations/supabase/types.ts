@@ -14,8 +14,48 @@ export type Database = {
   }
   public: {
     Tables: {
+      collections: {
+        Row: {
+          created_at: string
+          created_by: string | null
+          description: string
+          handle: string
+          id: string
+          image: string
+          position: number
+          published: boolean
+          title: string
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          created_by?: string | null
+          description?: string
+          handle: string
+          id?: string
+          image?: string
+          position?: number
+          published?: boolean
+          title: string
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          created_by?: string | null
+          description?: string
+          handle?: string
+          id?: string
+          image?: string
+          position?: number
+          published?: boolean
+          title?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
       products: {
         Row: {
+          collections: string[]
           created_at: string
           created_by: string | null
           currency: string
@@ -31,6 +71,7 @@ export type Database = {
           updated_at: string
         }
         Insert: {
+          collections?: string[]
           created_at?: string
           created_by?: string | null
           currency?: string
@@ -46,6 +87,7 @@ export type Database = {
           updated_at?: string
         }
         Update: {
+          collections?: string[]
           created_at?: string
           created_by?: string | null
           currency?: string

@@ -9,6 +9,8 @@ import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import Index from "./pages/Index";
 import Shop from "./pages/Shop";
+import Collections from "./pages/Collections";
+import CollectionDetail from "./pages/CollectionDetail";
 import ProductDetail from "./pages/ProductDetail";
 import Cart from "./pages/Cart";
 import OrderTracking from "./pages/OrderTracking";
@@ -32,6 +34,8 @@ const AppLayout = () => {
         <Routes>
           <Route path="/" element={<div className="-mt-16 md:-mt-20"><Index /></div>} />
           <Route path="/boutique" element={<Shop />} />
+          <Route path="/collections" element={<Collections />} />
+          <Route path="/collections/:handle" element={<CollectionDetail />} />
           <Route path="/product/:handle" element={<ProductDetail />} />
           <Route path="/panier" element={<Cart />} />
           <Route path="/suivi-commande" element={<OrderTracking />} />

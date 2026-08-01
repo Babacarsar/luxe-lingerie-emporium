@@ -18,6 +18,7 @@ const boutiqueSubLinks = [
 const navLinks = [
   { label: "Accueil", to: "/", hasSubmenu: false },
   { label: "Boutique", to: "/boutique", hasSubmenu: true },
+  { label: "Collections", to: "/collections" },
   { label: "À propos", to: "/a-propos", hasSubmenu: false },
   { label: "Contact", to: "/contact", hasSubmenu: false },
   { label: "Guide des Tailles", to: "/guide-des-tailles", hasSubmenu: false },
