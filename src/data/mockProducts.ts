@@ -68,6 +68,7 @@ export interface MockProduct {
     images: { edges: Array<{ node: { url: string; altText: string | null } }> };
     variants: { edges: Array<{ node: { id: string; title: string; price: { amount: string; currencyCode: string }; availableForSale: boolean; selectedOptions: Array<{ name: string; value: string }> } }> };
     options: Array<{ name: string; values: string[] }>;
+    collections?: string[];
   };
 }
 
