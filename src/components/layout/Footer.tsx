@@ -58,6 +58,8 @@ export const Footer = () => (
               <li><Link to="/guide-des-tailles" className="text-sm text-white/70 hover:text-primary transition-colors duration-300 font-body">Guide des Tailles</Link></li>
               <li><Link to="/contact" className="text-sm text-white/70 hover:text-primary transition-colors duration-300 font-body">Contact</Link></li>
               <li><Link to="/faq" className="text-sm text-white/70 hover:text-primary transition-colors duration-300 font-body">FAQ</Link></li>
+              <li><Link to="/avis" className="text-sm text-white/70 hover:text-primary transition-colors duration-300 font-body">Avis clients</Link></li>
+              <li><Link to="/favoris" className="text-sm text-white/70 hover:text-primary transition-colors duration-300 font-body">Mes favoris</Link></li>
             </ul>
           </div>
 

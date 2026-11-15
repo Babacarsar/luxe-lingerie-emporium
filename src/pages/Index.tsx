@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { ProductGrid } from "@/components/ProductGrid";
+import { Reviews } from "@/components/Reviews";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { ArrowRight, Sparkles, Heart, Shield } from "lucide-react";
 import heroBg from "@/assets/hero-bg.jpg";
@@ -404,6 +405,18 @@ const Index = () => {
               </motion.div>
             ))}
           </motion.div>
+        </div>
+      </section>
+
+      {/* Avis clients */}
+      <section className="py-20 md:py-28 border-b border-border">
+        <div className="container">
+          <Reviews title="Ce que disent nos clientes" limit={6} allowPost={false} />
+          <div className="mt-10 text-center">
+            <Link to="/avis" className="font-body text-xs uppercase tracking-[0.25em] text-primary hover:underline">
+              Voir tous les avis / Donner mon avis
+            </Link>
+          </div>
         </div>
       </section>
 

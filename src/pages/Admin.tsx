@@ -437,7 +437,14 @@ const Admin = () => {
           price: Number(n.priceRange.minVariantPrice.amount),
           currency: n.priceRange.minVariantPrice.currencyCode,
           product_type: n.productType,
-          sizes: n.options[0]?.values ?? ["Unique"],
+          // Garde le prix propre à chaque taille (ex. Thiouraye "100g=16000")
+          sizes: n.variants.edges.length
+            ? n.variants.edges.map((v) =>
+                v.node.price.amount === n.priceRange.minVariantPrice.amount
+                  ? v.node.title
+                  : `${v.node.title}=${v.node.price.amount}`
+              )
+            : ["Unique"],
           images: urls,
           collections: [],
           published: true,
@@ -605,6 +612,9 @@ const Admin = () => {
               <div className="space-y-2">
                 <Label htmlFor="sizes">Tailles (séparées par des virgules)</Label>
                 <Input id="sizes" value={form.sizes} onChange={(e) => setForm({ ...form, sizes: e.target.value })} />
+                <p className="text-xs text-muted-foreground">
+                  Prix différent selon la taille : ajoutez « =prix ». Ex. : 50g=9000, 100g=16000
+                </p>
               </div>
             </div>
 

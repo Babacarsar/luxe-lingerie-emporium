@@ -1,5 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import { supabase } from "@/integrations/supabase/client";
+import { parseSize, minPrice } from "@/lib/sizes";
 import { getMockProducts, mockProducts, type MockProduct } from "@/data/mockProducts";
 
 export interface DbProduct {
@@ -17,8 +18,9 @@ export interface DbProduct {
 }
 
 export function dbProductToMock(p: DbProduct): MockProduct {
-  const amount = String(p.price ?? 0);
-  const sizes = p.sizes?.length ? p.sizes : ["Unique"];
+  const base = String(p.price ?? 0);
+  const currencyCode = p.currency || "XOF";
+  const sizes = (p.sizes?.length ? p.sizes : ["Unique"]).map((s) => parseSize(s, base));
   return {
     node: {
       id: p.id,
@@ -27,7 +29,7 @@ export function dbProductToMock(p: DbProduct): MockProduct {
       handle: p.handle,
       productType: p.product_type,
       collections: p.collections || [],
-      priceRange: { minVariantPrice: { amount, currencyCode: p.currency || "XOF" } },
+      priceRange: { minVariantPrice: { amount: minPrice(sizes.map((s) => s.price), base), currencyCode } },
       images: {
         edges: (p.images || []).map((url) => ({ node: { url, altText: p.title } })),
       },
@@ -35,14 +37,42 @@ export function dbProductToMock(p: DbProduct): MockProduct {
         edges: sizes.map((s, i) => ({
           node: {
             id: `${p.id}-${i}`,
-            title: s,
-            price: { amount, currencyCode: p.currency || "XOF" },
+            title: s.label,
+            price: { amount: s.price, currencyCode },
             availableForSale: true,
-            selectedOptions: [{ name: "Taille", value: s }],
+            selectedOptions: [{ name: "Taille", value: s.label }],
           },
         })),
       },
-      options: [{ name: "Taille", values: sizes }],
+      options: [{ name: "Taille", values: sizes.map((s) => s.label) }],
+    },
+  };
+}
+
+/**
+ * Si l'admin n'a pas saisi de prix par taille (ex. "100g=16000"), on reprend ceux du
+ * catalogue intégré pour le même produit (Thiouraye : prix selon le grammage).
+ */
+function withCatalogPrices(product: MockProduct, raw: DbProduct): MockProduct {
+  if ((raw.sizes || []).some((s) => s.includes("="))) return product;
+  const ref = mockProducts.find((m) => m.node.handle === product.node.handle);
+  if (!ref) return product;
+  // Même proportion que le catalogue, appliquée au prix de base saisi dans l'admin.
+  const refBase = Number(ref.node.priceRange.minVariantPrice.amount);
+  const base = Number(raw.price);
+  const priceOf = new Map(ref.node.variants.edges.map((v) => [v.node.title, Number(v.node.price.amount)]));
+  const edges = product.node.variants.edges.map((v) => {
+    const refPrice = priceOf.get(v.node.title);
+    if (!refPrice || !refBase || !base) return v;
+    const amount = String(Math.round((base * refPrice) / refBase / 500) * 500);
+    return { node: { ...v.node, price: { ...v.node.price, amount } } };
+  });
+  const min = minPrice(edges.map((v) => v.node.price.amount), product.node.priceRange.minVariantPrice.amount);
+  return {
+    node: {
+      ...product.node,
+      variants: { edges },
+      priceRange: { minVariantPrice: { ...product.node.priceRange.minVariantPrice, amount: min } },
     },
   };
 }
@@ -54,7 +84,7 @@ async function fetchDbProducts(): Promise<MockProduct[]> {
     .eq("published", true)
     .order("created_at", { ascending: false });
   if (error) return [];
-  return (data as unknown as DbProduct[]).map(dbProductToMock);
+  return (data as unknown as DbProduct[]).map((p) => withCatalogPrices(dbProductToMock(p), p));
 }
 
 /** Products from the database (admin-managed) merged with the built-in catalog. */

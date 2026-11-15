@@ -4,6 +4,7 @@ import { useCartStore } from "@/stores/cartStore";
 import { Minus, Plus, Trash2, ShoppingCart, ArrowLeft } from "lucide-react";
 import { motion } from "framer-motion";
 import { toast } from "sonner";
+import { CartSizeSelect } from "@/components/CartSizeSelect";
 
 const formatPrice = (amount: string) =>
   new Intl.NumberFormat("fr-SN", { style: "currency", currency: "XOF", minimumFractionDigits: 0 }).format(parseFloat(amount));
@@ -58,7 +59,7 @@ const Cart = () => {
                   </div>
                   <div className="flex-1 min-w-0">
                     <h3 className="font-display text-base md:text-lg truncate">{item.product.node.title}</h3>
-                    <p className="text-xs text-muted-foreground font-body mt-1">{item.selectedOptions.map((o) => o.value).join(" • ")}</p>
+                    <CartSizeSelect item={item} />
                     <p className="text-primary font-bold font-body mt-2">{formatPrice(item.price.amount)}</p>
                     <div className="flex items-center gap-3 mt-3">
                       <Button variant="outline" size="icon" className="h-8 w-8" onClick={() => updateQuantity(item.variantId, item.quantity - 1)}>
@@ -105,6 +106,10 @@ const Cart = () => {
                   Passer la commande
                 </Button>
                 <p className="text-[10px] text-muted-foreground text-center font-body">Simulation — aucun paiement réel</p>
+                <p className="text-xs text-muted-foreground text-center font-body">
+                  Besoin de changer de taille ? Modifiez-la directement sur l'article.{" "}
+                  <Link to="/guide-des-tailles" className="text-primary underline">Guide des tailles</Link>
+                </p>
               </div>
             </motion.div>
           </div>

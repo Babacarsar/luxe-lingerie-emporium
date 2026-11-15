@@ -20,6 +20,9 @@ import SizeGuide from "./pages/SizeGuide";
 import Contact from "./pages/Contact";
 import FAQ from "./pages/FAQ";
 import Admin from "./pages/Admin";
+import Wishlist from "./pages/Wishlist";
+import Account from "./pages/Account";
+import ReviewsPage from "./pages/ReviewsPage";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -45,6 +48,9 @@ const AppLayout = () => {
           <Route path="/contact" element={<Contact />} />
           <Route path="/faq" element={<FAQ />} />
           <Route path="/admin" element={<Admin />} />
+          <Route path="/favoris" element={<Wishlist />} />
+          <Route path="/mon-compte" element={<Account />} />
+          <Route path="/avis" element={<ReviewsPage />} />
           <Route path="*" element={<NotFound />} />
 
         </Routes>

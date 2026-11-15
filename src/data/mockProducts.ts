@@ -56,6 +56,7 @@ import gnilane3 from "@/assets/gnilane-3.jpg";
 import dior1 from "@/assets/dior-1.jpg";
 import dior2 from "@/assets/dior-2.jpg";
 import dior3 from "@/assets/dior-3.jpg";
+import { parseSize, minPrice } from "@/lib/sizes";
 
 export interface MockProduct {
   node: {
@@ -73,16 +74,19 @@ export interface MockProduct {
 }
 
 const sizes = ["S", "M", "L", "XL", "XXL"];
-const makeVariants = (price: string, sizeList = sizes) =>
-  sizeList.map((s, i) => ({
-    node: {
-      id: `variant-${s}-${i}-${Math.random().toString(36).slice(2, 8)}`,
-      title: s,
-      price: { amount: price, currencyCode: "XOF" },
-      availableForSale: true,
-      selectedOptions: [{ name: "Taille", value: s }],
-    },
-  }));
+const makeVariants = (productId: string, price: string, sizeList = sizes) =>
+  sizeList.map((raw, i) => {
+    const { label, price: variantPrice } = parseSize(raw, price);
+    return {
+      node: {
+        id: `variant-${productId}-${i}`,
+        title: label,
+        price: { amount: variantPrice, currencyCode: "XOF" },
+        availableForSale: true,
+        selectedOptions: [{ name: "Taille", value: label }],
+      },
+    };
+  });
 
 const makeProduct = (
   id: string,
@@ -93,19 +97,23 @@ const makeProduct = (
   description: string,
   images: string[],
   sizeList?: string[]
-): MockProduct => ({
-  node: {
-    id,
-    title,
-    description,
-    handle,
-    productType: type,
-    priceRange: { minVariantPrice: { amount: price, currencyCode: "XOF" } },
-    images: { edges: images.map((url) => ({ node: { url, altText: title } })) },
-    variants: { edges: makeVariants(price, sizeList) },
-    options: [{ name: "Taille", values: sizeList || sizes }],
-  },
-});
+): MockProduct => {
+  const variants = makeVariants(id, price, sizeList);
+  const from = minPrice(variants.map((v) => v.node.price.amount), price);
+  return {
+    node: {
+      id,
+      title,
+      description,
+      handle,
+      productType: type,
+      priceRange: { minVariantPrice: { amount: from, currencyCode: "XOF" } },
+      images: { edges: images.map((url) => ({ node: { url, altText: title } })) },
+      variants: { edges: variants },
+      options: [{ name: "Taille", values: variants.map((v) => v.node.title) }],
+    },
+  };
+};
 
 export const mockProducts: MockProduct[] = [
   // ─── Lingerie Sexy ───
@@ -135,12 +143,12 @@ export const mockProducts: MockProduct[] = [
   makeProduct("50", "Oumou", "oumou", "24000", "pagne", "Pagne Oumou en dentelle rouge passion avec franges et bin bin cristal. Audace et sensualité.", [oumou1]),
 
   // ─── Thiouraye ───
-  makeProduct("20", "Thiouraye Oud Royal", "thiouraye-oud-royal", "12000", "thiouraye", "Encens premium à base de bois d'oud et de musc. Fragrance envoûtante longue durée.", [thiouraye1, thiouraye2], ["50g", "100g", "200g"]),
-  makeProduct("21", "Thiouraye Fleur de Niébé", "thiouraye-fleur-niebe", "8000", "thiouraye", "Mélange traditionnel sénégalais aux notes florales douces et boisées.", [thiouraye2, thiouraye3], ["50g", "100g"]),
-  makeProduct("22", "Thiouraye Ambre & Santal", "thiouraye-ambre-santal", "10000", "thiouraye", "Alliance subtile d'ambre chaud et de santal crémeux. Idéal pour la maison.", [thiouraye3, thiouraye4], ["50g", "100g", "200g"]),
+  makeProduct("20", "Thiouraye Oud Royal", "thiouraye-oud-royal", "12000", "thiouraye", "Encens premium à base de bois d'oud et de musc. Fragrance envoûtante longue durée.", [thiouraye1, thiouraye2], ["50g=12000", "100g=22000", "200g=40000"]),
+  makeProduct("21", "Thiouraye Fleur de Niébé", "thiouraye-fleur-niebe", "8000", "thiouraye", "Mélange traditionnel sénégalais aux notes florales douces et boisées.", [thiouraye2, thiouraye3], ["50g=8000", "100g=15000"]),
+  makeProduct("22", "Thiouraye Ambre & Santal", "thiouraye-ambre-santal", "10000", "thiouraye", "Alliance subtile d'ambre chaud et de santal crémeux. Idéal pour la maison.", [thiouraye3, thiouraye4], ["50g=10000", "100g=18000", "200g=34000"]),
   makeProduct("23", "Coffret Découverte 5 Parfums", "coffret-thiouraye-decouverte", "25000", "thiouraye", "Coffret luxe contenant 5 variétés de thiouraye premium en mini formats.", [thiouraye4, thiouraye5], ["Coffret"]),
-  makeProduct("24", "Thiouraye Musc Blanc Intense", "thiouraye-musc-blanc", "9000", "thiouraye", "Encens au musc blanc pur. Notes poudrées et enveloppantes.", [thiouraye5, thiouraye1], ["50g", "100g"]),
-  makeProduct("25", "Thiouraye Rose du Sahel", "thiouraye-rose-sahel", "11000", "thiouraye", "Fragrance rare à base de rose du Sahel et de bois précieux africains.", [thiouraye1, thiouraye3], ["50g", "100g"]),
+  makeProduct("24", "Thiouraye Musc Blanc Intense", "thiouraye-musc-blanc", "9000", "thiouraye", "Encens au musc blanc pur. Notes poudrées et enveloppantes.", [thiouraye5, thiouraye1], ["50g=9000", "100g=16000"]),
+  makeProduct("25", "Thiouraye Rose du Sahel", "thiouraye-rose-sahel", "11000", "thiouraye", "Fragrance rare à base de rose du Sahel et de bois précieux africains.", [thiouraye1, thiouraye3], ["50g=11000", "100g=20000"]),
 
   // ─── Bin Bin ───
   makeProduct("51", "Codou", "codou-binbin", "15000", "binbin", "Bin bin Codou en perles rouges, blanches et dorées avec pendentifs figurines et lettres. Audace et passion.", [codouBinbin1, codouBinbin2], ["S (60-70cm)", "M (70-80cm)", "L (80-90cm)", "XL (90-100cm)"]),

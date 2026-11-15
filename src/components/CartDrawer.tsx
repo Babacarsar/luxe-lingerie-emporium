@@ -5,6 +5,7 @@ import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle, SheetTr
 import { ShoppingCart, Minus, Plus, Trash2, Loader2 } from "lucide-react";
 import { useCartStore } from "@/stores/cartStore";
 import { toast } from "sonner";
+import { CartSizeSelect } from "@/components/CartSizeSelect";
 
 export const CartDrawer = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -57,7 +58,7 @@ export const CartDrawer = () => {
                       </div>
                       <div className="flex-1 min-w-0">
                         <h4 className="font-body font-bold text-sm truncate">{item.product.node.title}</h4>
-                        <p className="text-xs text-muted-foreground">{item.selectedOptions.map(o => o.value).join(' • ')}</p>
+                        <CartSizeSelect item={item} compact />
                         <p className="text-sm font-bold text-primary mt-1">{new Intl.NumberFormat('fr-SN', { style: 'currency', currency: 'XOF', minimumFractionDigits: 0 }).format(parseFloat(item.price.amount))}</p>
                       </div>
                       <div className="flex flex-col items-end gap-2 flex-shrink-0">

@@ -1,6 +1,7 @@
 import { useState, useEffect, FormEvent } from "react";
 import { Link, useLocation, useNavigate, useSearchParams } from "react-router-dom";
-import { Menu, X, Search } from "lucide-react";
+import { Menu, X, Search, Heart } from "lucide-react";
+import { useWishlistStore } from "@/stores/wishlistStore";
 import { Button } from "@/components/ui/button";
 import { CartDrawer } from "@/components/CartDrawer";
 import { motion, AnimatePresence } from "framer-motion";
@@ -31,6 +32,7 @@ export const Header = () => {
   const [searchParams] = useSearchParams();
   const [searchQuery, setSearchQuery] = useState(searchParams.get("search") || "");
   const location = useLocation();
+  const favoritesCount = useWishlistStore((s) => s.handles.length);
   const navigate = useNavigate();
 
   const handleSearch = (e: FormEvent) => {
@@ -145,6 +147,14 @@ export const Header = () => {
           <Button variant="ghost" size="icon" className="sm:hidden text-foreground/50 hover:text-foreground" onClick={() => setMobileOpen(true)}>
             <Search className="h-5 w-5" />
           </Button>
+          <Link to="/favoris" aria-label="Mes favoris" className="relative text-foreground/50 hover:text-foreground transition-colors">
+            <Heart className="h-5 w-5" />
+            {favoritesCount > 0 && (
+              <span className="absolute -top-2 -right-2 h-4 min-w-4 px-1 rounded-full bg-primary text-primary-foreground text-[10px] leading-4 text-center">
+                {favoritesCount}
+              </span>
+            )}
+          </Link>
           <CartDrawer />
           <AccountDropdown />
         </div>

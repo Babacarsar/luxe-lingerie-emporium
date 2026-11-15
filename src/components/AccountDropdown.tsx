@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { User, Package, Ruler, HelpCircle } from "lucide-react";
+import { User, Package, Ruler, HelpCircle, Heart } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   Popover,
@@ -12,6 +12,7 @@ import { AuthModal } from "./AuthModal";
 const accountLinks = [
   { label: "Mon compte", icon: User, to: "/mon-compte" },
   { label: "Mes commandes", icon: Package, to: "/mes-commandes" },
+  { label: "Mes favoris", icon: Heart, to: "/favoris" },
   { label: "Mes mensurations", icon: Ruler, to: "/guide-des-tailles" },
   { label: "Besoin d'aide ?", icon: HelpCircle, to: "/faq" },
 ];
