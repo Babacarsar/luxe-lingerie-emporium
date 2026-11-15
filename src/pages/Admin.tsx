@@ -95,7 +95,6 @@ async function uploadImage(userId: string, file: File | Blob, ext = "jpg") {
 }
 
 const AuthPanel = () => {
-  const [mode, setMode] = useState<"login" | "signup">("login");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
@@ -104,20 +103,10 @@ const AuthPanel = () => {
     e.preventDefault();
     setLoading(true);
     try {
-      if (mode === "login") {
-        const { error } = await supabase.auth.signInWithPassword({ email, password });
-        if (error) throw error;
-      } else {
-        const { data, error } = await supabase.auth.signUp({
-          email,
-          password,
-          options: { emailRedirectTo: `${window.location.origin}/admin` },
-        });
-        if (error) throw error;
-        if (!data.session) {
-          toast.info("Vérifiez votre e-mail pour confirmer votre compte.");
-        }
-      }
+      // Pas d'inscription libre : les comptes admin sont créés depuis Supabase
+      // et autorisés dans la table admin_users.
+      const { error } = await supabase.auth.signInWithPassword({ email, password });
+      if (error) throw error;
     } catch (err) {
       toast.error(err instanceof Error ? err.message : "Erreur d'authentification");
     } finally {
@@ -139,15 +128,8 @@ const AuthPanel = () => {
         </div>
         <Button type="submit" disabled={loading} className="w-full bg-primary text-primary-foreground">
           {loading && <Loader2 className="w-4 h-4 mr-2 animate-spin" />}
-          {mode === "login" ? "Se connecter" : "Créer un compte"}
+          Se connecter
         </Button>
-        <button
-          type="button"
-          onClick={() => setMode(mode === "login" ? "signup" : "login")}
-          className="w-full text-xs text-muted-foreground hover:text-primary font-body"
-        >
-          {mode === "login" ? "Pas encore de compte ? Inscription" : "Déjà un compte ? Connexion"}
-        </button>
       </form>
     </div>
   );
@@ -352,9 +334,21 @@ const Admin = () => {
     return () => sub.subscription.unsubscribe();
   }, []);
 
+  // Vérifie que le compte connecté figure dans admin_users. Si la fonction n'existe pas
+  // encore (migration non exécutée), on laisse passer : la base reste la vraie barrière.
+  const { data: isAdmin, isLoading: checkingAdmin } = useQuery({
+    queryKey: ["is-admin", session?.user.id],
+    enabled: !!session,
+    queryFn: async () => {
+      const { data, error } = await supabase.rpc("is_admin");
+      if (error) return true;
+      return data === true;
+    },
+  });
+
   const { data: products = [], isLoading } = useQuery({
     queryKey: ["admin-products"],
-    enabled: !!session,
+    enabled: !!session && isAdmin === true,
     queryFn: async () => {
       const { data, error } = await supabase
         .from("products")
@@ -367,7 +361,7 @@ const Admin = () => {
 
   const { data: collectionList = [] } = useQuery({
     queryKey: ["admin-collections"],
-    enabled: !!session,
+    enabled: !!session && isAdmin === true,
     queryFn: async () => {
       const { data, error } = await supabase
         .from("collections")
@@ -548,6 +542,28 @@ const Admin = () => {
   }
 
   if (!session) return <AuthPanel />;
+
+  if (checkingAdmin) {
+    return (
+      <div className="container py-32 flex justify-center">
+        <Loader2 className="w-6 h-6 animate-spin text-primary" />
+      </div>
+    );
+  }
+
+  if (!isAdmin) {
+    return (
+      <div className="container max-w-md py-20 text-center space-y-6">
+        <h1 className="font-display text-3xl text-gold-gradient">Accès refusé</h1>
+        <p className="font-body text-muted-foreground">
+          Le compte {session.user.email} n'a pas accès à l'administration.
+        </p>
+        <Button variant="outline" onClick={() => supabase.auth.signOut()}>
+          <LogOut className="w-4 h-4 mr-2" /> Déconnexion
+        </Button>
+      </div>
+    );
+  }
 
   return (
     <div className="container py-12 space-y-10">
